@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Chronic Calculator</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/calculator.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .media-left span {
+            border: solid 1px #ddd;
+            width: 26px;
+            height: 26px;
+            line-height: 23px;
+            background: #fff;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .title-space {
+            margin-top: 5px;
+        }
+
+        @media only screen and (min-width: 720px) {
+            .spncontent {
+                margin-left: 0;
+            }
+        }
+
+        @media only screen and (max-width: 720px) {
+            .spncontent {
+                margin-left: 58%;
+            }
+        }
+    </style>
+
+    <!-- Custom Radio Button & Other Styling improvements -->
+    <style>
+        .content-text {
+            margin-top: 1rem;
+            padding-left: 11%;
+            padding-right: 10%;
+        }
+
+        @media (min-width : 720px) {
+            .content-text label {
+                font-size: 1.55rem;
+                font-weight: 540;
+            }
+
+            .content-text p {
+                font-size: 1.3rem;
+                font-weight: 540;
+            }
+        }
+
+
+        .media-left span {
+            border: solid 1px #858484;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #fff;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .media-body h4 {
+            margin-top: 1.5%;
+        }
+
+        /* Hide the native radio button */
+        input[type="radio"] {
+            display: none;
+        }
+
+        .custom-radio,
+        .custom-radio-2 {
+            position: relative;
+            padding-left: 3rem;
+            cursor: pointer;
+            user-select: none;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            margin-right: 7%;
+        }
+
+        .custom-radio input[type="radio"]+.radio-mark {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 2.2rem;
+            width: 2.2rem;
+            background-color: #d9d9d9;
+            border-radius: 50%;
+        }
+
+        .custom-radio-2 input[type="radio"]+.radio-mark-2 {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 2.3rem;
+            width: 2.3rem;
+            background-color: #d9d9d9;
+            border-radius: 50%;
+        }
+
+        .custom-radio input[type="radio"]:checked+.radio-mark,
+        .custom-radio-2 input[type="radio"]:checked+.radio-mark-2 {
+            background-color: #d9d9d9;
+        }
+
+        /* Create the inner circle when selected */
+        .custom-radio input[type="radio"]:checked+.radio-mark:after {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background: #dd052b;
+        }
+
+        .custom-radio-2 input[type="radio"]:checked+.radio-mark-2:after {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background: #dd052b;
+        }
+
+        .custom-radio .radio-text {
+            margin-left: 5%;
+            font-weight: 500;
+            font-size: 1.4rem;
+        }
+
+        .custom-radio-2 .radio-text {
+            margin-left: 18%;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive styling for smaller screens */
+        @media (max-width: 576px) {
+
+            .media-heading b {
+                font-size: 1.5rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0px !important;
+            }
+
+            .media-heading small {
+                font-size: 1.5rem !important;
+                font-weight: 500 !important;
+                color: #858484 !important;
+            }
+
+            .media-body h4 {
+                font-size: 1.6rem !important;
+                font-weight: 500 !important;
+            }
+
+            .media-left span {
+                border: solid 1px #858484;
+                width: 35px;
+                height: 35px;
+                line-height: 40px;
+                background: #fff;
+                text-align: center;
+                display: inline-block;
+                border-radius: 50%;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .content-text {
+                margin-top: 1rem;
+                padding-left: 0%;
+                padding-right: 5%;
+            }
+
+            .content-text input {
+                border: 1px solid #858484;
+                height: 30%;
+            }
+
+            .media hr {
+                height: 1px !important;
+            }
+
+
+            .media-body h4 {
+                margin-top: 3%;
+            }
+
+            .height-check {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .text-left {
+                text-align: left !important;
+            }
+
+            .custom-radio {
+                padding-left: 2rem;
+                font-size: 1.5rem;
+            }
+
+
+            .custom-radio-2 {
+                padding-left: 2rem;
+                font-size: 1.2rem;
+                margin-left: 3%;
+            }
+
+            .custom-radio input[type="radio"]+.radio-mark,
+            .custom-radio-2 input[type="radio"]+.radio-mark-2 {
+                height: 1.2rem;
+                width: 1.2rem;
+            }
+
+            .custom-radio input[type="radio"]:checked+.radio-mark:after,
+            .custom-radio-2 input[type="radio"]:checked+.radio-mark-2:after {
+                top: 0.3rem;
+                left: 0.3rem;
+                width: 0.6rem;
+                height: 0.6rem;
+            }
+
+            .custom-radio .radio-text {
+                margin-left: 1%;
+                font-weight: 700;
+                font-size: 1rem;
+            }
+
+            .custom-radio-2 .radio-text {
+                margin-left: 10%;
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+
+    <!-- MIXPANEL Library -->
+    <!-- start Mixpanel -->
+    <script type="text/javascript">(function (e, a) {
+            if (!a.__SV) {
+                var b = window;
+                try {
+                    var c, l, i, j = b.location, g = j.hash;
+                    c = function (a, b) {
+                        return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null
+                    };
+                    g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search)))
+                } catch (m) {
+                }
+                var k, h;
+                window.mixpanel = a;
+                a._i = [];
+                a.init = function (b, c, f) {
+                    function e(b, a) {
+                        var c = a.split(".");
+                        2 == c.length && (b = b[c[0]], a = c[1]);
+                        b[a] = function () {
+                            b.push([a].concat(Array.prototype.slice.call(arguments,
+                                0)))
+                        }
+                    }
+
+                    var d = a;
+                    "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel";
+                    d.people = d.people || [];
+                    d.toString = function (b) {
+                        var a = "mixpanel";
+                        "mixpanel" !== f && (a += "." + f);
+                        b || (a += " (stub)");
+                        return a
+                    };
+                    d.people.toString = function () {
+                        return d.toString(1) + ".people (stub)"
+                    };
+                    k = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+                    for (h = 0; h < k.length; h++) e(d, k[h]);
+                    a._i.push([b, c, f])
+                };
+                a.__SV = 1.2;
+                b = e.createElement("script");
+                b.type = "text/javascript";
+                b.async = !0;
+                b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+                c = e.getElementsByTagName("script")[0];
+                c.parentNode.insertBefore(b, c)
+            }
+        })(document, window.mixpanel || []);
+        mixpanel.init("a63fd4b1b17fc3f767d923329bbe61ce");
+    </script><!-- end Mixpanel -->
+    <!-- MIXPANEL Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var user_id;
+        $(document).ready(function () {
+
+            var url = window.location.href;
+
+            user_id = getParameterByName("user_id", url);
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <!--   <nav class="navbar navbar-default navbg ">
+   <div class="container-fluid">
+      <div class="">
+         <a class="navbar-brand" href="#">
+         <img alt="Brand" src="images/back-arrow.png">
+         </a>
+         <h1 class="text-center">Chronic Calculator</h1>
+         <h6 class="text-center">Know your case validity</h6>
+      </div>
+   </div>
+   </nav> -->
+
+    <div class="contianer">
+        <!-- <div style="border:  solid green; display: flex; justify-content: center;"> -->
+        <div class="col-md-5 col-md-offset-4 col-xs-12">
+            <div class="row">
+                <h4 class="media-heading" style="padding-top: 10px;padding-left: 20px;">
+                    <br><b class="red" style="font-size: 20px; text-decoration: none;">Mandatory Parameters :</b>
+                    <br><br>
+                    <small style="font-size: 90%; color: rgb(77, 73, 73); font-weight: 600;">If a customer
+                        has multiple conditions (co-morbidity cases where customer is suffering from more than one
+                        condition), you can enter values for multiple conditions.</small>
+                </h4>
+                <!-- <hr> -->
+            </div>
+            <div class="row">
+                <div class="clearfix"></div>
+                <!-- Crausel-->
+                <div class="tab-content">
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12">
+
+                        <div class="showdiv" id="div1">
+                            <div class="clearfix"></div>
+                            <div class="media" style="margin-bottom: 10px;">
+                                <div class="media-left">
+                                    <span>A</span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 style="font-size: 18px;" class="media-heading title-space">Asthma</h4>
+                                </div>
+                                <hr
+                                    style="border: none; background-color: #ff1818; margin: 0; margin-top: 3px; height: 2px;">
+                            </div>
+                            <div class="form-group odd row content-text">
+                                <label class="col-sm-6 col-xs-7 font-12" for="Asthma_Symptoms">
+                                    Asthma Symptoms per week.
+                                    <p data-toggle="modal" data-target=".bs-example-modal-sm"
+                                        style="cursor:pointer; color: black;"><em><b class="red">Click here</b></em> for
+                                        explanation</p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <input type="number" class="form-control static_class" name="Asthma_Symptoms"
+                                        value="" id="Asthma_Symptoms"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="4"
+                                        inputmode="numeric" pattern="[0-9]*">
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="media" style="margin-bottom: 10px;">
+                                <div class="media-left">
+                                    <span>B</span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 style="font-size: 18px;" class="media-heading title-space">Blood Pressure</h4>
+                                </div>
+                                <hr
+                                    style="border: none; background-color: #ff1818; margin: 0; margin-top: 3px; height: 2px;">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group row content-text">
+                                <label class="col-sm-6 col-xs-7 font-12">
+                                    Blood Pressure - Systolic(BP).
+                                    <p data-toggle="modal" data-target=".bs-example-modal-smb1"
+                                        style="cursor:pointer; color: black;">
+                                        <em><b class="red">Click here</b></em> for explanation
+                                    </p>
+                                    </p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <input type="number" class="form-control" name="bp1" oninput="maxLengthCheck(this)"
+                                        maxlength="4" inputmode="numeric" pattern="[0-9]*">
+                                    <p class="text-left"><small>mmHg (Upper Value)</small></p>
+                                </div>
+                            </div>
+                            <div class="form-group odd row content-text">
+                                <label for="bp2" class="col-sm-6 col-xs-7 font-12">
+                                    Blood Pressure - Diastolic (BP).
+                                    <p data-toggle="modal" data-target=".bs-example-modal-smb2"
+                                        style="cursor: pointer;  color: black;">
+                                        <em><b class="red">Click here</b></em> for explanation
+                                    </p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <input type="number" class="form-control" name="bp2" id="bp2"
+                                        oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
+                                        pattern="[0-9]*">
+                                    <p class="text-left"><small> mmHg (Lower Value)</small></p>
+                                </div>
+                            </div>
+                            <div class="media" style="margin-bottom: 10px;">
+                                <div class="media-left">
+                                    <span>D</span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 style="font-size: 18px;" class="media-heading title-space">Diabetes</h4>
+                                </div>
+                                <hr
+                                    style="border: none; background-color: #ff1818; margin: 0; margin-top: 3px; height: 2px;">
+                            </div>
+
+                            <!-- <div class="form-group even row content-text">
+                                <label class="col-sm-6 col-xs-7 font-12">
+                                    Fasting Blood Sugar(FBS).
+                                    <p data-toggle="modal" data-target=".bs-example-modal-smd1"
+                                        style="cursor:pointer; color: black;">
+                                        <em><b class="red">Click here</b></em> for explanation
+                                    </p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <input type="number" name="diabetes1" class="form-control"
+                                        oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
+                                        pattern="[0-9]*" placeholder="%">
+                                    <p class="text-left"><small>(value can be in decimal)</small></p>
+                                </div>
+                            </div> -->
+
+
+                            <div class="form-group even row content-text">
+                                <label for="diabetes2" class="col-sm-6 col-xs-7 font-12">
+                                    HbA1c ( Glycosylated Hb).
+                                    <p data-toggle="modal" data-target=".bs-example-modal-smd2"
+                                        style="cursor: pointer;"><em><b class="red">Click here</b></em> for explanation
+                                    </p>
+                                    </p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <input type="number" name="diabetes2" id="diabetes2" class="form-control"
+                                        oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
+                                        pattern="[0-9]*">
+                                    <p class="text-left"><small>(value can be in decimal)</small></p>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                            <hr>
+                            <h4 class="media-heading" style="padding-left: 20px;">
+                                <b class="red" style="font-size: 15px;">Optional Parameters:</b> <small>You may check below parameters for better case validation</small></h4>
+                            <hr>
+                        </div> -->
+
+
+
+
+
+                            <!-- <div class="form-group  odd row">
+                            <label class="col-sm-6 col-xs-7 font-12">
+                                Kidney Function-Urine microalbumin
+                                <p data-toggle="modal" data-target="#microalbumin" style="cursor:pointer;"><em><b
+                                        class="red">Click here</b></em> for explanation</p>
+                            </label>
+                            <div class="col-sm-6 col-xs-5">
+                                <input type="number" class="form-control static_class" name="Kidney_Function_Urine"
+                                       value="" id="Kidney_Function_Urine" oninput="maxLengthCheck(this)" maxlength="4"
+                                       inputmode="numeric" pattern="[0-9]*">
+                                <p><small>mg/dL</small></p>
+                            </div>
+                        </div>
+                        <div class="form-group even row">
+                            <label class="col-sm-6 col-xs-7 font-12">
+                                Kidney Function-S Creatinine
+                                <p data-toggle="modal" data-target="#Creatinine" style="cursor:pointer;"><em><b
+                                        class="red">Click here</b></em> for explanation</p>
+                            </label>
+                            <div class="col-sm-6 col-xs-5">
+                                <input type="number" class="form-control static_class" name="Kidney_Function_S" value=""
+                                       id="Kidney_Function_S" oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
+                                       pattern="[0-9]*">
+                                <p><small>mg/dL</small></p>
+                            </div>
+                        </div> -->
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="media" style="margin-bottom: 10px;">
+                            <div class="media-left">
+                                <span>P</span>
+                            </div>
+                            <div class="media-body">
+                                <h4 style="font-size: 18px;" class="media-heading title-space">PTCA (Agioplasty)</h4>
+                            </div>
+                            <hr
+                                style="border: none; background-color: #ff1818; margin: 0; margin-top: 3px; height: 2px;">
+                        </div>
+                        <div class="form-group odd row content-text">
+                            <label class="col-sm-6 col-xs-7 font-12">
+                                Number of Stents.
+                                <p data-toggle="modal" data-target="#ptca-1" style="cursor:pointer; color: black;">
+                                    <em><b class="red">Click here</b></em> for explanation
+                                </p>
+                                </p>
+                            </label>
+                            <div class="col-sm-6 col-xs-5">
+                                <input type="number" class="form-control" name="bp1" oninput="maxLengthCheck(this)"
+                                    maxlength="4" inputmode="numeric" pattern="[0-9]*">
+                                <!-- <p class="text-left"><small>mmHg (Upper Value)</small></p> -->
+                            </div>
+                        </div>
+                        <div class="form-group even row content-text">
+                            <label for="bp2" class="col-sm-6 col-xs-7 font-12">
+                                Number of Arteries Blocked.
+                                <p data-toggle="modal" data-target="#ptca-2" style="cursor: pointer;  color: black;">
+                                    <em><b class="red">Click here</b></em> for explanation
+                                </p>
+                            </label>
+                            <div class="col-sm-6 col-xs-5">
+                                <input type="number" class="form-control" name="bp2" id="bp2"
+                                    oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric" pattern="[0-9]*">
+                                <!-- <p class="text-left"><small> mmHg (Lower Value)</small></p> -->
+                            </div>
+                        </div>
+                        <div class="form-group odd row content-text" id="div4">
+                            <label for="asthmayes" class="col-sm-6 col-xs-7 font-12">
+                                Is Stenting done prior to 1 yr.
+                                <p data-toggle="modal" data-target="#ptca-3" style="cursor: pointer; color: black;">
+                                    <em><b class="red">Click
+                                            here</b></em> for explanation
+                                </p>
+                            </label>
+
+                            <div class="col-sm-6 col-xs-5" style="display: flex; align-items: center;">
+                                <label class="custom-radio-2"><input type="radio" name="" value="meter" checked>
+                                    <span class="radio-mark-2"></span>
+                                    <span class="radio-text">Yes</span>
+                                </label>
+                                <label class="custom-radio-2"><input type="radio" name="" value="meter">
+                                    <span class="radio-mark-2"></span>
+                                    <span class="radio-text">No</span>
+                                </label>
+                                <!-- <label class="custom-radio-2"><input type="radio" name="" value="meter">
+                                    <span class="radio-mark-2"></span>
+                                    <span style="margin-left: 15%; font-weight: 600;">N/A</span>
+                                </label> -->
+                            </div>
+
+                            <!-- <br>
+                            <small><i>Refer to the decline list available in KMS</i></small> -->
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="media" style="margin-bottom: 10px;">
+                            <div class="media-left">
+                                <span>C</span>
+                            </div>
+                            <div class="media-body">
+                                <h4 style="font-size: 18px;" class="media-heading title-space">COPD</h4>
+                            </div>
+                            <hr
+                                style="border: none; background-color: #ff1818; margin: 0; margin-top: 3px; height: 2px;">
+                        </div>
+                        <div class="form-group even row content-text" id="div4">
+                            <label for="asthmayes" class="col-sm-6 col-xs-7 font-12">
+                                COPD
+                                <p data-toggle="modal" data-target="#copd" style="cursor: pointer; color: black;"><em><b
+                                            class="red">Click
+                                            here</b></em> for explanation</p>
+                            </label>
+
+                            <div class="col-sm-6 col-xs-5" style="display: flex; align-items: center;">
+                                <label class="custom-radio-2"><input type="radio" name="" value="meter" checked>
+                                    <span class="radio-mark-2"></span>
+                                    <span class="radio-text">Yes</span>
+                                </label>
+                                <label class="custom-radio-2"><input type="radio" name="" value="meter">
+                                    <span class="radio-mark-2"></span>
+                                    <span class="radio-text">No</span>
+                                </label>
+                                <!-- <label class="custom-radio-2"><input type="radio" name="" value="meter">
+                                    <span class="radio-mark-2"></span>
+                                    <span style="margin-left: 15%; font-weight: 600;">N/A</span>
+                                </label> -->
+                            </div>
+
+                            <!-- <br>
+                            <small><i>Refer to the decline list available in KMS</i></small> -->
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="media" style="margin-bottom: 10px;">
+                            <div class="media-left">
+                                <span>B</span>
+                            </div>
+                            <div class="media-body">
+                                <h4 style="font-size: 18px;" class="media-heading title-space">BMI</h4>
+                                <p data-toggle="modal" data-target="#bmi"
+                                    style="cursor:pointer; font-size: 1.3rem; color: black; margin-left: 1%; margin-top: 0.5%; margin-bottom: 2px;">
+                                    <em><b class="red">Click
+                                            here</b></em> for explanation
+                                </p>
+                            </div>
+                            <hr style="border: none; background-color: #ff1818; margin: 0;  height: 2px;">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="showdiv" id="div2">
+                            <div class="form-group even row content-text">
+                                <label class="col-sm-6 col-xs-7 font-12">
+                                    Height
+                                    <p data-toggle="modal" data-target="#bmi-height"
+                                        style="cursor:pointer;   color: black;"><em><b class="red">Click here</b></em>
+                                        for explanation</p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="number" class="form-control static_class" name="BMI_Height"
+                                                value="" id="mtr" oninput="maxLengthCheck(this)" maxlength="4"
+                                                inputmode="numeric" pattern="[0-9]*" placeholder="Centimeter">
+                                        </div>
+
+                                        <div id="feet_inch" style="display:none;">
+                                            <div class="col-md-6 col-sm-12">
+                                                <input type="number" class="form-control static_class" name="feet"
+                                                    value="" placeholder="Feet" id="feet" inputmode="numeric"
+                                                    maxlength="2"
+                                                    onKeyUp="if(this.value>9){this.value='9';}else if(this.value<0){this.value='0';}"
+                                                    size="2" min="1" max="11">
+                                            </div>
+
+
+                                            <div class="col-md-6 col-sm-12">
+                                                <input type="number" class="form-control static_class" name="inch"
+                                                    value="" id="inch"
+                                                    onKeyUp="if(this.value>11){this.value='11';}else if(this.value<0){this.value='0';}"
+                                                    maxlength="4" inputmode="numeric" pattern="[0-9]*"
+                                                    placeholder="Inch">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- <p style="margin-top: 4%; border: 1px solid pink; font-size: 1.7rem;"><label
+                                            class="radio-inline"><input type="radio" name="height_unit" value="meter"
+                                                checked><small>Centimeter</small></label>
+                                        <label class="radio-inline"><input type="radio" name="height_unit"
+                                                value="inch"><small>Feet/Inch</small></label>
+                                    </p> -->
+
+                                    <!-- Custom Radio Buttons -->
+                                    <p style="margin-top: 6%; display: flex; align-items: center;" class="height-check">
+                                        <label class="custom-radio"><input type="radio" name="height_unit" value="meter"
+                                                checked>
+                                            <span class="radio-mark"></span>
+                                            <span class="radio-text">Centimeter</span>
+                                        </label>
+
+                                        <label class="custom-radio"><input type="radio" name="height_unit" value="inch">
+                                            <span class="radio-mark"></span>
+                                            <span class="radio-text">Feet/Inch</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group odd row content-text">
+                                <label class="col-sm-6 col-xs-7 font-12">
+                                    Weight
+                                    <p data-toggle="modal" data-target="#bmi-weight"
+                                        style="cursor:pointer; color: black;"><em><b class="red">Click here</b></em> for
+                                        explanation</p>
+                                </label>
+                                <div class="col-sm-6 col-xs-5">
+                                    <input type="number" class="form-control static_class" name="BMI_Weight" value=""
+                                        id="asthma1" oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
+                                        pattern="[0-9]*">
+                                    <p class="text-left"><small> Kgs</small> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group odd row" id="div3">
+                        <label for="2D_Echo" class="col-sm-6 col-xs-7 font-12">
+                            Has the insured person undergone 2D Echo/ECG/Stress Test?
+                            <p data-toggle="modal" data-target="#echo" style="cursor: pointer;"><em><b class="red">Click
+                                here</b></em> for explanation</p>
+                        </label>
+                        <div class="col-sm-6 col-xs-5">
+                            <label class="radio-inline">
+                                <input type="radio" name="2D_Echo" value="Yes" id="2D_Echo" class="static_class"/> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="2D_Echo" value="No" id="2D_Echo2" class="static_class"/> No
+                            </label>
+
+
+                        </div>
+                        <br>
+                        <small style="font-size: 78%;"><i>Select "Yes" if findings are ABNORMAL</i>
+                        </small>
+                        <small style="font-size: 78%;" class="spncontent"><i>Select"No" if findings are</i>
+                        </small>
+                        <small style="font-size: 78%;" class="spncontent"><i>NORMAL</i>
+                        </small>
+                    </div>
+                    <div class="form-group even row" id="div4">
+                        <label for="asthmayes" class="col-sm-6 col-xs-7 font-12">
+                            Does the insured person has any of the conditions mention in the decline list?
+                            <p data-toggle="modal" data-target="#decline" style="cursor: pointer;"><em><b class="red">Click
+                                here</b></em> for explanation</p>
+                        </label>
+                        <div class="col-sm-6 col-xs-5">
+                            <label class="radio-inline">
+                                <input type="radio" name="Decline_condition" value="Yes" id="asthmayes"
+                                       class="static_class"/> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="Decline_condition" value="No" id="asthmano"
+                                       class="static_class"/> No
+                            </label>
+                        </div>
+                        <br>
+                        <small><i>Refer to the decline list available in KMS</i></small>
+                    </div> -->
+                        <p class="text-center footerbtn">
+                            <button type="button" class="btn btn-default btn-lg redbtn rounded-sm"
+                                id="Check_Case_Validity">Check
+                                Case
+                                Validity
+                            </button>
+                        </p>
+
+                    </div>
+
+
+                </div>
+                <!--   <div class="customNavigation">
+               <a class="btn prev">Previous</a>
+               <a class="btn next">Next</a>
+               <a class="btn play">Autoplay</a>
+               <a class="btn stop">Stop</a>
+               </div>
+               -->
+                <!-- Crausel-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            var owl = $("#owl-demo");
+
+            owl.owlCarousel({
+
+                items: 10, //10 items above 1000px browser width
+                itemsDesktop: [1000, 8], //5 items between 1000px and 901px
+                itemsDesktopSmall: [900, 6], // 3 items betweem 900px and 601px
+                itemsTablet: [600, 4], //2 items between 600 and 0;
+                itemsMobile: [320, 4] // itemsMobile disabled - inherit from itemsTablet option
+
+            });
+
+            // Custom Navigation Events
+            $(".next").click(function () {
+                owl.trigger('owl.next');
+            })
+            $(".prev").click(function () {
+                owl.trigger('owl.prev');
+            })
+            $(".play").click(function () {
+                owl.trigger('owl.play', 1000);
+            })
+            $(".stop").click(function () {
+                owl.trigger('owl.stop');
+            })
+
+        });
+        $(document).ready(function () {
+
+            $('input[name="height_unit"]').on('change', function () {
+                if ($(this).val() == 'inch') {
+                    $('#feet_inch').show();
+                    $('#mtr').hide();
+                } else {
+                    $('#feet_inch').hide();
+                    $('#mtr').show();
+                }
+            });
+
+
+
+            function check_inputs() {
+                var a_status = false;
+                var error_count = 0;
+                $('input[type="text"],input[type="number"]').each(function () {
+                    var val = $(this).val();
+                    var name = $(this).attr('name');
+                    if ($(this).is(':visible') && (name == 'Kidney_Function_S' || name == 'Kidney_Function_Urine')) {
+                        /*if(($('input[name="Kidney_Function_Urine"]').val() != '' && $('input[name="Kidney_Function_S"]').val() == '') || ($('input[name="Kidney_Function_Urine"]').val() == '' && $('input[name="Kidney_Function_S"]').val() != '')){
+                              a_status = false;
+                                 error_count++;
+                        }else{
+                        if($('input[name="Kidney_Function_Urine"]').val() != '' && $('input[name="Kidney_Function_S"]').val() != ''){
+                           if(($('input[name="Kidney_Function_Urine"]').val() != '' && parseFloat($('input[name="Kidney_Function_Urine"]').val()) <= 30) && ($('input[name="Kidney_Function_S"]').val() != '' && parseFloat($('input[name="Kidney_Function_S"]').val()) <= 1.3)){
+                           if((parseFloat($('input[name="Kidney_Function_Urine"]').val()) <= 30) || (parseFloat($('input[name="Kidney_Function_S"]').val()) <= 1.3)){
+    
+                                 a_status = true;
+                              }else{
+                                 a_status = false;
+                                 error_count++;
+                              }
+                              /*}
+                          }*/
+                        if ($('input[name="Kidney_Function_Urine"]').val() != '') {
+                            if (parseFloat($('input[name="Kidney_Function_Urine"]').val()) <= 30) {
+                                a_status = true;
+                            } else {
+                                a_status = false;
+                                error_count++;
+                            }
+                        }
+                        if ($('input[name="Kidney_Function_S"]').val() != '') {
+                            if (parseFloat($('input[name="Kidney_Function_S"]').val()) <= 1.3) {
+                                a_status = true;
+                            } else {
+                                a_status = false;
+                                error_count++;
+                            }
+                        }
+
+                    }
+                    if ($(this).is(':visible') && (name == 'BMI_Weight' || name == 'BMI_Weight')) {
+                        if ($('input[name="height_unit"]:checked').val() == 'meter') {
+                            var height = parseFloat($('input[name="BMI_Height"]').val());
+                        } else {
+                            var height = parseFloat($('input[name="feet"]').val());
+                        }
+                        if ((height && $('input[name="BMI_Weight"]').val() == '') || (!height && $('input[name="BMI_Weight"]').val() != '')) {
+                            a_status = false;
+                            error_count++;
+                        } else {
+                            if (height && $('input[name="BMI_Weight"]').val() != '') {
+                                var height = 0;
+                                if ($('input[name="height_unit"]:checked').val() == 'meter') {
+                                    height = parseFloat($('input[name="BMI_Height"]').val()) / 100;
+                                    height = height * height;
+                                } else {
+                                    var feet = parseFloat($('input[name="feet"]').val());
+                                    var inch = parseFloat($('input[name="inch"]').val());
+                                    height = feet / 3.28;
+                                    height += inch ? (inch * 0.0254) : 0;
+                                    height = height * height;
+                                }
+                                console.log(height);
+                                if (height && ((parseFloat($('input[name="BMI_Weight"]').val()) / height) <= 37 && (parseFloat($('input[name="BMI_Weight"]').val()) / height) >= 14)) {
+                                    //$('#div3').show();
+                                    a_status = true;
+                                } else {
+                                    //$('#div3,#div4').hide();
+                                    a_status = false;
+                                    error_count++;
+                                }
+                            }
+                        }
+                    }
+
+
+                    if ($(this).is(':visible') && name == 'Asthma_Symptoms') {
+                        if (val != '') {
+                            if (parseFloat(val) < 4) {
+                                //$('#div1').show();
+                                a_status = true;
+                            } else {
+                                //$('#div1,#div2,#div3,#div4').hide();
+                                a_status = false;
+                                error_count++;
+                            }
+                        }
+                    }
+
+                    if ($(this).is(':visible') && (name == 'bp2' || name == 'bp1')) {
+                        if ($('input[name="bp1"]').val() != '' && $('input[name="bp2"]').val() != '') {
+
+                            if ($('input[name="bp1"]').val() != '' && parseFloat($('input[name="bp1"]').val()) <= 180 && $('input[name="bp2"]').val() != '' && parseFloat($('input[name="bp2"]').val()) <= 110) {
+                                //$('#divb1').show();
+                                a_status = true;
+                            } else {
+                                //$('#divb1,#divb2,#divb3,#divb4').hide();
+                                a_status = false;
+                                error_count++;
+                            }
+                        }
+                    }
+                    if ($(this).is(':visible') && (name == 'diabetes2' || name == 'diabetes1')) {
+                        if ($('input[name="diabetes1"]').val() != '' && $('input[name="diabetes2"]').val() != '') {
+
+                            if ($('input[name="diabetes1"]').val() != '' && parseFloat($('input[name="diabetes1"]').val()) <= 240 && $('input[name="diabetes2"]').val() != '' && parseFloat($('input[name="diabetes2"]').val()) <= 10) {
+                                //$('#divd1').show();
+                                a_status = true;
+                            } else {
+                                //$('#divd1,#divd2,#divd3,#divd4').hide();
+                                a_status = false;
+                                error_count++;
+                            }
+                        }
+                    }
+                });
+
+                $('input[type="radio"]').each(function () {
+
+                    var name = $(this).attr('name');
+                    var selected = $('input[name="' + name + '"]:checked').val();
+                    if (name == '2D_Echo' && $('input[name="2D_Echo"]:checked').val() != undefined) {
+                        if (selected == 'No') {
+                            //$('#div4').show();
+                            a_status = true;
+                        } else {
+                            //$('#div4').hide();
+                            a_status = false;
+                            error_count++;
+                        }
+                    }
+
+                    if (name == 'Decline_condition' && $('input[name="Decline_condition"]:checked').val() != undefined) {
+                        if (selected == 'No') {
+                            a_status = true;
+                        } else {
+                            a_status = false;
+                            error_count++;
+                        }
+                    }
+
+                });
+
+                return error_count;
+            }
+
+            var fld = '';
+
+            function check_empty_values() {
+                var a_status = false;
+                $('input[type="text"],input[type="number"]').each(function () {
+                    var val = $(this).val();
+                    var name = $(this).attr('name');
+                    /*if($(this).is(':visible') && (name=='Kidney_Function_S' || name=='Kidney_Function_Urine')){
+                        if(($('input[name="Kidney_Function_Urine"]').val() != '' && $('input[name="Kidney_Function_S"]').val() == '') || ($('input[name="Kidney_Function_Urine"]').val() == '' && $('input[name="Kidney_Function_S"]').val() != '')){
+                              a_status = true;
+                        }
+                    }*/
+                    if ($(this).is(':visible') && (name == 'BMI_Weight' || name == 'BMI_Weight')) {
+                        if ($('input[name="height_unit"]:checked').val() == 'meter') {
+                            var height = parseFloat($('input[name="BMI_Height"]').val());
+                        } else {
+                            var height = parseFloat($('input[name="feet"]').val());
+                        }
+
+                        if ((height && $('input[name="BMI_Weight"]').val() == '') || (!height && $('input[name="BMI_Weight"]').val() != '')) {
+                            a_status = true;
+                            if (fld == '') {
+                                if (!height) {
+                                    fld = 'Height';
+                                }
+                                if ($('input[name="BMI_Weight"]').val() == '') {
+                                    fld = 'Weight';
+                                }
+                            }
+                        }
+                    }
+
+
+                    if ($(this).is(':visible') && (name == 'bp2' || name == 'bp1')) {
+                        if (($('input[name="bp1"]').val() != '' && $('input[name="bp2"]').val() == '') || ($('input[name="bp1"]').val() == '' && $('input[name="bp2"]').val() != '')) {
+                            a_status = true;
+                            if (fld == '') {
+                                if ($('input[name="bp1"]').val() == '') {
+                                    fld = 'Blood Pressure - Systolic(BP)';
+                                }
+                                if ($('input[name="bp2"]').val() == '') {
+                                    fld = 'Blood Pressure - Diastolic (BP)';
+                                }
+                            }
+                        }
+                    }
+
+                    if ($(this).is(':visible') && (name == 'diabetes2' || name == 'diabetes1')) {
+                        if (($('input[name="diabetes1"]').val() != '' && $('input[name="diabetes2"]').val() == '') || ($('input[name="diabetes1"]').val() == '' && $('input[name="diabetes2"]').val() != '')) {
+                            a_status = true;
+                            if (fld == '') {
+                                if ($('input[name="diabetes1"]').val() == '') {
+                                    fld = 'Fasting Blood Sugar(FBS)';
+                                }
+                                if ($('input[name="diabetes2"]').val() == '') {
+                                    fld = 'HbA1c ( Glycosylated Hb)';
+                                }
+                            }
+                        }
+                    }
+                });
+                return a_status;
+            }
+
+            $('#Check_Case_Validity').on('click', function () {
+                var smalert = false;
+                /*$('input[type="text"],input[type="number"]').each(function(){
+                   if($(this).is(':visible') && $(this).val()==''){
+                      smalert = true;
+                   }
+                });*/
+
+                if (check_empty_values()) {
+                    smalert = true;
+                }
+                var fld_err = [];
+                if ($('input[name="Asthma_Symptoms"]').val() == '') {
+                    if ($.inArray('Asthma_Symptoms', fld_err) === -1) {
+                        fld_err.push('Asthma_Symptoms');
+                    }
+                }
+                if ($('input[name="bp1"]').val() == '' && $('input[name="bp2"]').val() == '') {
+                    if ($.inArray('bp', fld_err) === -1) {
+                        fld_err.push('bp');
+                    }
+                }
+                if ($('input[name="diabetes1"]').val() == '' && $('input[name="diabetes2"]').val() == '') {
+                    if ($.inArray('diabetes', fld_err) === -1) {
+                        fld_err.push('diabetes');
+                    }
+                }
+
+                $('input[name="Asthma_Symptoms"],input[name="bp1"],input[name="bp2"],input[name="diabetes1"],input[name="diabetes2"]').each(function () {
+                    if ($(this).is(':visible')) {
+                        var name = $(this).attr('name');
+
+                        if ($(this).is(':visible') && (name == 'bp2' || name == 'bp1')) {
+                            if (($('input[name="bp1"]').val() != '' && $('input[name="bp2"]').val() == '') || ($('input[name="bp1"]').val() == '' && $('input[name="bp2"]').val() != '')) {
+                                smalert = true;
+                                if (fld == '') {
+                                    if ($('input[name="bp1"]').val() == '') {
+                                        fld = 'Blood Pressure - Systolic(BP)';
+                                    }
+                                    if ($('input[name="bp2"]').val() == '') {
+                                        fld = 'Blood Pressure - Diastolic (BP)';
+                                    }
+                                }
+                            }
+                        }
+                        if ($(this).is(':visible') && (name == 'diabetes2' || name == 'diabetes1')) {
+                            if (($('input[name="diabetes1"]').val() != '' && $('input[name="diabetes2"]').val() == '') || ($('input[name="diabetes1"]').val() == '' && $('input[name="diabetes2"]').val() != '')) {
+                                smalert = true;
+                                if (fld == '') {
+                                    if ($('input[name="diabetes1"]').val() == '') {
+                                        fld = 'Fasting Blood Sugar(FBS)';
+                                    }
+                                    if ($('input[name="diabetes2"]').val() == '') {
+                                        fld = 'HbA1c ( Glycosylated Hb)';
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                });
+                if (fld_err.length === 3) {
+                    smalert = true;
+                    fld = 'Asthma or Blood Pressure or Diabetes';
+                }
+                var mixpanel_data = {};
+                $('input[type="text"]:visible,input[type="number"]:visible').each(function () {
+                    var iname = $(this).attr('name');
+                    var ivalue = $(this).val();
+                    mixpanel_data[iname] = ivalue;
+                });
+                $('input[type="radio"]:visible').each(function () {
+                    if ($(this).is(':checked')) {
+                        var iname = $(this).attr('name');
+                        var ivalue = $(this).val();
+                        mixpanel_data[iname] = ivalue;
+                    }
+                });
+                if (check_inputs() == 0) {
+                    mixpanel_data['status'] = 'Approved';
+                } else {
+                    mixpanel_data['status'] = 'Rejected';
+                }
+                if (smalert) {
+                    mixpanel_data['status'] = 'Missing field value - ' + fld.replace('_', ' ');
+                }
+                if (user_id !== undefined) {
+                    mixpanel_data['user_id'] = user_id;
+                }
+
+                $.post('http://abhkmscmsprod.chaptervitamins.com/tracker/chronic_calculator', mixpanel_data);
+                if (smalert) {
+                    $('#fld').text(fld.replace('_', ' '));
+                    fld = '';
+                    $('#smalert').modal('show');
+                    return false;
+                }
+
+                if (check_inputs() == 0) {
+                    $('#approved').modal('show');
+                } else {
+                    $('#rejected').modal('show');
+                }
+            });
+
+
+        });
+    </script>
+    <script type="text/javascript">
+        /* $(function(){
+           $("#ranjeet").click(function(){
+    
+             if($(this).val() === "Yes"){
+    
+           });
+         });*/
+    </script>
+    <!--Click Here Popup-->
+    <div class="modal fade bs-example-modal-smalert" id="smalert" tabindex="-1" role="dialog"
+        aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p class="red"><b> * Information Missing ! *</b><span
+                            style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">Please
+                            enter some value in <span id="fld"></span></span></p>
+                    <hr>
+                    <p class="text-left"> Put in numbers only</p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p><b>Breathelessness Per Week</b>
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px;">
+                        <li>
+                            If data not available then put "0"
+                        </li>
+                        <li> Ask customer as this data is not available in the report</li>
+                        <li> Ask about breathlessness episodes in a week</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Click Here-->
+    <!--Click Here blood Popup-->
+    <div class="modal fade bs-example-modal-smb1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p><b>Systolic Blood Pressure</b>
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px;">
+                        <li>
+                            If data not available then put "0"
+                        </li>
+                        <li> Don't confuse with Diastolic Blood Pressure</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-smb2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p><b> Diastolic Blood Pressure</b>
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px;">
+                        <li>
+                            If data not available then put "0"
+                        </li>
+                        <li> Don't confuse with Systolic Blood Pressure</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Click blood Here-->
+    <div class="modal fade bs-example-modal-sma2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p>
+                        Ask the customer if he / she is taking any medication for asthma
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Click Here Diabetes Popup-->
+    <div class="modal fade bs-example-modal-smd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p>
+                        <b>HbA1c</b>
+                    </p>
+                    <hr>
+                    <ul style=" padding-left: 15px; margin:0">
+                        <li> If data not available then put "0".</li>
+                        <li>Check blood reports only, don't confuse by Urine Sugar.</li>
+                        <li> Don't confuse with Random Blood Sugar or Hb or Heamoglobulin.</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Click Diabetes Here-->
+    <!--Click Here Cal Popup-->
+    <div class="modal fade bs-example-modal-smc1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p>
+                        <b>Total Cholestrol</b>
+                    </p>
+                    <hr>
+                    <ul style=" padding-left: 15px; margin:0">
+                        <li> If data not available then put "0"</li>
+                        <li>Check in Blood Reports</li>
+                        <li>It is also called Cholestrol</li>
+                        <li> Don't confuse with LDL, VLDL, or HDL</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-smc2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p>
+                        <b>Serum Triglycerides</b>
+                    </p>
+                    <hr>
+                    <ul style=" padding-left: 15px; margin:0">
+                        <li> If data not available then put "0"</li>
+                        <li>Check in Blood Reports</li>
+                        <li> Don't confuse with LDL, VLDL, or HDL</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Click Cal Here-->
+    <!--Click Here Diabetes Popup-->
+    <div class="modal fade bs-example-modal-smd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p>
+                        <b>HbA1c</b>
+                    </p>
+                    <hr>
+                    <ul style=" padding-left: 15px; margin:0">
+                        <li> If data not available then put "0"</li>
+                        <li>Check blood reports only, don't confuse by Urine Sugar</li>
+                        <li> Don't confuse with Random Blood Sugar or Hb or Heamoglobulin</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Click Diabetes Here-->
+    <!--Click On button Popup  Asthma YES POPUP START HERE  RANJEET A YES -->
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="rejected" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="red">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>Your case is likely to be rejected<br>
+                            </b>
+                        </h5>
+                        <hr>
+                        <p style="color:#000;">Note: Final decision of acceptance/ rejection will be subject to
+                            underwriting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="approved" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="green">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b> Case is ok to source<br>
+                                <span style="color:#000;display: inline-block; padding-top:10px; "> You may contact
+                                    Pre-sourcing approval team</span></b>
+                        </h5>
+                    </div>
+                    <hr>
+                    <!-- <p style="padding-top: 0px; font-size: 12px;"><b>Contact No. :</b> <a href="tel:022- 62278712" target="_self">022- 62278712</a><br>
+                   <br> <b>Email :</b> <a href="mailto:RetailUW.healthinsurance@adityabirlacapital.com">RetailUW.healthinsurance@adityabirlacapital.com</a>
+                   <br> <br> <b>Timing:</b> 10AM to 6 PM
+                </p> -->
+                    <p style="color:#000;">Note: Final decision of acceptance/ rejection will be subject to underwriting
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  Asthma YES POPUP START HERE  RANJEET A YES -->
+    <!--  Asthma NO POPUP START HERE  RANJEET A NO -->
+    <!--Click On button Popup-->
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="asthma1-contentno" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>No DATA ADD HERE Case is ok to source<br>
+                                You may contact Pre-sourcing approval team</b>
+                        </h5>
+                    </div>
+                    <hr>
+                    <!--  <p style="padding-top: 15px; font-size: 12px;">Contact No. : 022- 622278712
+                    <br> Email : RetailUW.healthinsurance@adityabirlacapital.com
+                    <br> Timing: 10AM to 6 PM
+                 </p> -->
+                    <p>( Note: Final decision of acceptance / rejection will be subject to underwriting)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  BLOOD PRESSURE POPUP START HERE  RANJEET B -->
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="blp1-content" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="bloodpressure-content-html"><b>BLOOD PRESSURE TOP INPUT BOX No DATA
+                                ADD
+                                HERE Case is ok to source<br>
+                                You may contact Pre-sourcing approval team</b>
+                        </h5>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="blp1less" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>BLOOD PRESSURE TOP INPUT BOX LESS DATA DATA ADD
+                                HERE
+                                Case is ok to source<br>
+                                You may contact Pre-sourcing approval team</b>
+                        </h5>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="blp2-content" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>BLOOD PRESSURE 2 INPUT BOX HERE Case is ok to
+                                source<br>
+                                You may contact Pre-sourcing approval team</b>
+                        </h5>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="blp2less" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>BLOOD PRESSURE 2 INPUT BOX LESS DATA Case is ok to
+                                source<br>
+                                You may contact Pre-sourcing approval team</b>
+                        </h5>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Click On button Popup-->
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="asthma1-contentless3" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>Case is ok to source<br>
+                                <span style="color:#000;display: inline-block; padding-top:10px; "> You may contact
+                                    Pre-sourcing approval team</span></b>
+                        </h5>
+                    </div>
+                    <hr>
+                    <!--  <p style="padding-top: 15px; font-size: 12px;">Contact No. : <a href="tel:022- 622278712" target="_self">022- 622278712</a>
+                    <br> Email : <a href="mailto:RetailUW.healthinsurance@adityabirlacapital.com">RetailUW.healthinsurance@adityabirlacapital.com</a>
+                    <br> Timing: 10AM to 6 PM
+                 </p> -->
+                    <p>Note: Final decision is subject to underwriting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  BLOOD PRESSURE  POPUP END HERE  RANJEET A NO -->
+    <!--Click On button Popup-->
+    <div class="modal fade bs-example-modal-smbtn" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        id="asthma1-content_alert" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space ">
+                    <div class="headerdiv1">
+                        <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="myModalLabel"><b>Please enter number in text box<br>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--New Popup add-->
+    <div class="modal fade" id="microalbumin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> Kidney Function-Urine microalbumin
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>
+                            If data not available then put "0"
+                        </li>
+                        <li> Check reports only</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Creatinine" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> Kidney Function-S Creatinine
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>
+                            If data not available then put "0"
+                        </li>
+                        <li> Check reports only</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="bmi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> BMI
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>
+                            Body Mass Index (BMI) measures body fat based on weight and height.
+                        </li>
+                        <li>Evaluates weight category (underweight, normal, overweight, obese) for health assesment.
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="bmi-height" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> BMI-Height
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <!-- <li>
+                            If data not available then put "0"
+                        </li>
+                        <li>Ask customer as this data is not available in any report</li> -->
+                        <li>If data not available then put between "152 cm to 160 cm".</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="bmi-weight" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> BMI-Weight
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <!-- <li>
+                            If data not available then put "0"
+                        </li>
+                        <li>Ask customer as this data is not available in any report</li> -->
+                        <li>If data not available then put betweem "55-70 kg".</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="echo" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> 2D Echo/ECG/Stress Test
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>
+                            Ask if customer has undergone 2D Echo/ECG/Stress Test & Any findings other than 'Normal’
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PTCA Agioplasty -->
+    <div class="modal fade" id="ptca-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> Number of Stents
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>If data not available then put betweem "0 and 5".</li>
+                        <li>Ask customer as this data is not available in any report.</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ptca-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> Number of Arteries Blocked
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>If data not available then put betweem "0 and 5".</li>
+                        <li>Ask customer as this data is not available in any report.</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ptca-3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> Stenting.
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>If data not available then put "Yes or No".</li>
+                        <li>Ask customer as this data is not available in any report.</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="copd" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> COPD
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>If data not available then put "Yes or No".</li>
+                        <li>Ask customer as this data is not available in any report.</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> Decline condition
+                    </p>
+                    <hr>
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>
+                            Ask about any history of or currently suffering from any medical or surgical condition apart
+                            from ABCD
+                        </li>
+                        <li> Check customer current medical condition with decline list</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--New Popup add Ends-->
+</body>
+
+</html>
+<script>
+    $(document).ready(function () {
+        $('.redbtn2').on('click', function (e) {
+            e.preventDefault();
+            var box = $.trim($('.item.active a').text());
+            var typeSelected = $.trim($('.item.active p').text());
+
+            if (box == 'A') {
+                var asthma = parseInt($(this).parents('.card').find('input[type="number"]').val());
+                var medication = $(this).parents('.card').find('input[name="asthmarad"]:checked').val();
+
+                console.log('asthma value', asthma);
+                console.log('medication', medication);
+                console.log('typeSelected', typeSelected);
+                console.log('user_id', user_id);
+
+                if ($(this).parents('.card').find('input[type="number"]').val() == '') {
+                    $('#smalert').modal('show');
+                    return false;
+                }
+
+                mixpanel.identify(user_id);
+                mixpanel.track(
+                    "Chronic Calculator",
+                    {
+                        "Option": box,
+                        "Type": typeSelected,
+                        "Input 1": asthma,
+                        "Input 2": medication
+                    }
+                );
+
+                if (asthma > 2) {
+                    if (medication == 'Yes') {
+                        $('#rejected').modal('show');
+                    } else {
+                        $('#approved').modal('show');
+                    }
+                } else {
+                    $('#approved').modal('show');
+                }
+            }
+
+            if (box == 'B') {
+                var bp1 = parseInt($(this).parents('.card').find('input[name="bp1"]').val());
+                var bp2 = parseInt($(this).parents('.card').find('input[name="bp2"]').val());
+                console.log(bp1, bp2);
+                if (!bp1 || !bp2) {
+                    $('#smalert').modal('show');
+                    return false;
+                }
+
+                mixpanel.identify(user_id);
+                mixpanel.track(
+                    "Chronic Calculator",
+                    {
+                        "Option": box,
+                        "Type": typeSelected,
+                        "Input 1": bp1,
+                        "Input 2": bp2
+                    }
+                );
+
+                if (bp1 <= 180) {
+                    $('#rejected').modal('show');
+                } else if (bp2 <= 110) {
+                    $('#rejected').modal('show');
+                } else {
+                    $('#approved').modal('show');
+                }
+            }
+
+            if (box == 'C') {
+                var cholestrol1 = parseInt($(this).parents('.card').find('input[name="cholestrol1"]').val());
+                var cholestrol2 = parseInt($(this).parents('.card').find('input[name="cholestrol2"]').val());
+                if (!cholestrol1 || !cholestrol2) {
+                    $('#smalert').modal('show');
+                    return false;
+                }
+
+                mixpanel.identify(user_id);
+                mixpanel.track(
+                    "Chronic Calculator",
+                    {
+                        "Option": box,
+                        "Type": typeSelected,
+                        "Input 1": cholestrol1,
+                        "Input 2": cholestrol2
+                    }
+                );
+
+                if (cholestrol1 > 0 && cholestrol2 > 0) {
+                    $('#approved').modal('show');
+                } else {
+                    //alert('Value should be greater than 0');
+                    //$('#rejected').modal('show');
+                }
+            }
+
+            if (box == 'D') {
+                var diabetes1 = parseInt($(this).parents('.card').find('input[name="diabetes1"]').val());
+                var diabetes2 = parseInt($(this).parents('.card').find('input[name="diabetes2"]').val());
+                if (!diabetes1 || !diabetes2) {
+                    $('#smalert').modal('show');
+                    return false;
+                }
+
+                mixpanel.identify(user_id);
+                mixpanel.track(
+                    "Chronic Calculator",
+                    {
+                        "Option": box,
+                        "Type": typeSelected,
+                        "Input 1": diabetes1,
+                        "Input 2": diabetes2
+                    }
+                );
+
+                if (diabetes1 <= 240) {
+                    $('#rejected').modal('show');
+                } else if (diabetes2 <= 10) {
+                    $('#rejected').modal('show');
+                } else {
+                    $('#approved').modal('show');
+                }
+            }
+        });
+    });
+
+
+</script>
+<script>
+    // This is an old version, for a more recent version look at
+    // https://jsfiddle.net/DRSDavidSoft/zb4ft1qq/2/
+    function maxLengthCheck(object) {
+        if (object.value.length > object.maxLength)
+            object.value = object.value.slice(0, object.maxLength)
+    }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83205424-15"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-83205424-15');
+</script>
