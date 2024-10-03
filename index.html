@@ -376,8 +376,8 @@
                     <br><b class="red" style="font-size: 20px; text-decoration: none;">Mandatory Parameters :</b>
                     <br><br>
                     <small style="font-size: 90%; color: rgb(77, 73, 73); font-weight: 600;">If a customer
-                        has multiple conditions (co-morbidity cases where customer is suffering from more than one
-                        condition), you can enter values for multiple conditions.</small>
+                        has multiple conditions (co-morbidity, where the customer is suffering from more than one
+                        condition), you can enter values for each condition.</small>
                 </h4>
             </div>
             <div class="row">
@@ -400,7 +400,7 @@
                             </div>
                             <div class="form-group odd row content-text">
                                 <label class="col-sm-6 col-xs-7 font-12" for="Asthma_Symptoms">
-                                    Asthma Symptoms per week.
+                                    Asthma symptoms per week
                                     <p data-toggle="modal" data-target=".bs-example-modal-sm"
                                         style="cursor:pointer; color: black;"><em><b class="red">Click here</b></em> for
                                         explanation</p>
@@ -427,7 +427,7 @@
                             <div class="clearfix"></div>
                             <div class="form-group row content-text">
                                 <label class="col-sm-6 col-xs-7 font-12">
-                                    Blood Pressure - Systolic(BP).
+                                    Blood Pressure - Systolic (BP)
                                     <p data-toggle="modal" data-target=".bs-example-modal-smb1"
                                         style="cursor:pointer; color: black;">
                                         <em><b class="red">Click here</b></em> for explanation
@@ -443,7 +443,7 @@
                             </div>
                             <div class="form-group odd row content-text">
                                 <label for="bp2" class="col-sm-6 col-xs-7 font-12">
-                                    Blood Pressure - Diastolic (BP).
+                                    Blood Pressure - Diastolic (BP)
                                     <p data-toggle="modal" data-target=".bs-example-modal-smb2"
                                         style="cursor: pointer;  color: black;">
                                         <em><b class="red">Click here</b></em> for explanation
@@ -469,7 +469,7 @@
 
                             <div class="form-group even row content-text">
                                 <label for="diabetes2" class="col-sm-6 col-xs-7 font-12">
-                                    HbA1c ( Glycosylated Hb).
+                                    HbA1c ( Glycosylated Hb)
                                     <p data-toggle="modal" data-target=".bs-example-modal-smd2"
                                         style="cursor: pointer;"><em><b class="red">Click here</b></em> for explanation
                                     </p>
@@ -497,7 +497,7 @@
                         </div>
                         <div class="form-group odd row content-text">
                             <label class="col-sm-6 col-xs-7 font-12">
-                                Number of Stents.
+                                Number of Stents
                                 <p data-toggle="modal" data-target="#ptca-1" style="cursor:pointer; color: black;">
                                     <em><b class="red">Click here</b></em> for explanation
                                 </p>
@@ -510,7 +510,7 @@
                         </div>
                         <div class="form-group even row content-text">
                             <label for="bp2" class="col-sm-6 col-xs-7 font-12">
-                                Number of Arteries Blocked.
+                                Number of Arteries Blocked
                                 <p data-toggle="modal" data-target="#ptca-2" style="cursor: pointer;  color: black;">
                                     <em><b class="red">Click here</b></em> for explanation
                                 </p>
@@ -522,7 +522,7 @@
                         </div>
                         <div class="form-group odd row content-text" id="div4">
                             <label for="asthmayes" class="col-sm-6 col-xs-7 font-12">
-                                Is Stenting done within one year ?
+                                Is Stenting done within one year?
                                 <p data-toggle="modal" data-target="#ptca-3" style="cursor: pointer; color: black;">
                                     <em><b class="red">Click
                                             here</b></em> for explanation
@@ -530,13 +530,13 @@
                             </label>
 
                             <div class="col-sm-6 col-xs-5" style="display: flex; align-items: center;">
-                                <label class="custom-radio-2"><input type="radio" name="stenting_prior_year" value="yes" id="year"
-                                        onchange="calculateInsurancePlan()">
+                                <label class="custom-radio-2"><input type="radio" name="stenting_prior_year" value="yes"
+                                        id="year" onchange="calculateInsurancePlan()">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">Yes</span>
                                 </label>
-                                <label class="custom-radio-2"><input type="radio" name="stenting_prior_year" value="no" id="year"
-                                        onchange="calculateInsurancePlan()">
+                                <label class="custom-radio-2"><input type="radio" name="stenting_prior_year" value="no"
+                                        id="year" onchange="calculateInsurancePlan()">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">No</span>
                                 </label>
@@ -1227,7 +1227,7 @@
         // Function to Caluculate Plan On Flowing Chronic Inputs
         function calculateInsurancePlan() {
 
-            
+
 
             $('input[name="Asthma_Symptoms"]').on('input', function () {
                 insurancePlans.asthma = $(this).val() ? $(this).val() : null;
@@ -1332,13 +1332,13 @@
                 }
             }
         }
-       
+
         // Function to Plan to Calculate One Plan For User Input
         function determineBestFitPlan() {
             var bestFitPlan = ["MAX", "MAX+", "VYTL", "VIP", "VIP+"];
 
             var copd = document.querySelector('input[name="copd_condition"]:checked') || null;
-            insurancePlans.copd =  copd ? copd.value : null;
+            insurancePlans.copd = copd ? copd.value : null;
 
             var yearOfStentElement = document.querySelector('input[name="stenting_prior_year"]:checked');
             insurancePlans.ptca3 = yearOfStentElement ? yearOfStentElement.value : null;
@@ -1375,8 +1375,8 @@
             if (insurancePlans.diabetes) {
                 var hba1c = insurancePlans.diabetes;
 
-                if(hba1c <= 7){
-                      // Will Include All the Plans
+                if (hba1c <= 7) {
+                    // Will Include All the Plans
                 }
                 else if (hba1c <= 8) {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
@@ -1496,7 +1496,7 @@
                 <div class="space">
                     <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <p class="red"><b> * Your Insurance Plan *</b>
+                    <p class="red"><b> * Your insurance plan *</b>
                         <span style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">
                             You are Eligible For : <span id="yourInsurancePlan"></span></span>
                     </p>
@@ -1515,7 +1515,7 @@
                             aria-hidden="true">&times;</span></button>
                     <p class="red"><b> * Missing Information *</b>
                         <span style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">
-                            You Need To Enter At Least Three Values</span>
+                            You need to enter at least three values.</span>
                     </p>
                     <div class="clearfix"></div>
                 </div>
@@ -1532,8 +1532,7 @@
                     <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                     <p class="red"><b> * Information Missing ! *</b><span
-                            style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">Please
-                            enter some value in <span id="fld"></span></span></p>
+                            style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">Please enter a value in:<span id="fld"></span></span></p>
                     <hr>
                     <p class="text-left"> Put in numbers only</p>
                     <div class="clearfix"></div>
@@ -1552,13 +1551,13 @@
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px;">
                         <li>
-                            If data not available then put "0" or keep empty.
+                            If data is not available, enter 0 or leave it empty.
                         </li>
                         <li>
-                            Value should be between "1" to "3".
+                            Value should be between 1 to 3.
                         </li>
-                        <li> Ask customer if this data is not available in the report</li>
-                        <li> Ask about breathlessness episodes in a week</li>
+                        <li> Ask customer if this data is not available in the report.</li>
+                        <li> Ask about breathlessness episodes in a week.</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -1578,10 +1577,10 @@
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px;">
                         <li>
-                            If data not available then put "0" or keep empty.
+                            If data is not available, enter 0 or leave it empty.
                         </li>
-                        <li> The value should be between "1" to "180"</li>
-                        <li> Don't confuse with Diastolic Blood Pressure</li>
+                        <li> The value should be between 1 to 180.</li>
+                        <li> Don't confuse with Diastolic Blood Pressure.</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -1599,10 +1598,10 @@
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px;">
                         <li>
-                            If data not available then put "0" or keep empty.
+                            If data is not available, enter 0 or leave it empty.
                         </li>
-                        <li> The value should be between "1" to "100"</li>
-                        <li> Don't confuse with Systolic Blood Pressure</li>
+                        <li> The value should be between 1 to 100.</li>
+                        <li> Don't confuse with Systolic Blood Pressure.</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -1636,9 +1635,9 @@
                     </p>
                     <hr style="margin: 2%;">
                     <ul style=" padding-left: 15px; margin:0">
-                        <li>If data not available then put "0" or keep empty.</li>
-                        <li>The value should be between "1" to "10".</li>
-                        <li>Check blood reports only, don't confuse by Urine Sugar.</li>
+                        <li>If data is not available, enter 0 or leave it empty.</li>
+                        <li>The value should be between 1 to 10.</li>
+                        <li>Check the blood reports only, don't confuse by Urine Sugar.</li>
                         <li>Don't confuse with Random Blood Sugar or Hb or Hemoglobin.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -1659,7 +1658,7 @@
                     </p>
                     <hr>
                     <ul style=" padding-left: 15px; margin:0">
-                        <li> If data not available then put "0"</li>
+                        <li>If data is not available, enter '0' or leave it empty.</li>
                         <li>Check in Blood Reports</li>
                         <li>It is also called Cholestrol</li>
                         <li> Don't confuse with LDL, VLDL, or HDL</li>
@@ -1680,7 +1679,7 @@
                     </p>
                     <hr>
                     <ul style=" padding-left: 15px; margin:0">
-                        <li> If data not available then put "0"</li>
+                        <li> If data not available then enter "0"</li>
                         <li>Check in Blood Reports</li>
                         <li> Don't confuse with LDL, VLDL, or HDL</li>
                     </ul>
@@ -1702,8 +1701,8 @@
                     </p>
                     <hr style="margin: 2%;">
                     <ul style=" padding-left: 15px; margin:0">
-                        <li>If data not available then put "0" or keep empty.</li>
-                        <li>The value should be between "1" to "10".</li>
+                        <li>If data not available then enter 0 or keep empty.</li>
+                        <li>The value should be between 1 to 10.</li>
                         <li>Check blood reports only, don't confuse by Urine Sugar.</li>
                         <li>Don't confuse with Random Blood Sugar or Hb or Hemoglobin.</li>
                     </ul>
@@ -1746,13 +1745,13 @@
                                 aria-hidden="true">&times;</span></button>
                         <h5 class="modal-title" id="myModalLabel"><b> Case is ok to source<br>
                                 <span style="color:#000;display: inline-block; padding-top:10px; "> You may contact
-                                    Pre-sourcing approval team</span></b>
+                                    pre-sourcing approval team.</span></b>
                         </h5>
                     </div>
                     <hr>
                     <p class="red"><b> * Your Insurance Plan *</b>
                         <span style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">
-                            You are Eligible For : <span id="bestFitPlan"></span></span>
+                            You are eligible for: : <span id="bestFitPlan"></span></span>
                     </p>
                     <hr>
                     <!-- <p style="padding-top: 0px; font-size: 12px;"><b>Contact No. :</b> <a href="tel:022- 62278712" target="_self">022- 62278712</a><br>
@@ -1778,7 +1777,7 @@
                         <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <h5 class="modal-title" id="myModalLabel"><b>No DATA ADD HERE Case is ok to source<br>
-                                You may contact Pre-sourcing approval team</b>
+                            You may contact the pre-sourcing approval team.</b>
                         </h5>
                     </div>
                     <hr>
@@ -1875,9 +1874,8 @@
                     <div class="headerdiv1">
                         <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h5 class="modal-title" id="myModalLabel"><b>Case is ok to source<br>
-                                <span style="color:#000;display: inline-block; padding-top:10px; "> You may contact
-                                    Pre-sourcing approval team</span></b>
+                        <h5 class="modal-title" id="myModalLabel"><b>The case is okay to source.<br>
+                                <span style="color:#000;display: inline-block; padding-top:10px; ">You may contact the pre-sourcing approval team.</span></b>
                         </h5>
                     </div>
                     <hr>
@@ -1885,7 +1883,7 @@
                     <br> Email : <a href="mailto:RetailUW.healthinsurance@adityabirlacapital.com">RetailUW.healthinsurance@adityabirlacapital.com</a>
                     <br> Timing: 10AM to 6 PM
                  </p> -->
-                    <p>Note: Final decision is subject to underwriting</p>
+                    <p>Note: The final decision is subject to underwriting.</p>
                 </div>
             </div>
         </div>
@@ -1959,10 +1957,10 @@
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
                         <li>
-                            Body Mass Index (BMI) measures body fat based on weight and height.
+                            The Body Mass Index (BMI) measures body fat based on weight and height.
                         </li>
                         <li>
-                            Evaluates weight category (underweight, normal, overweight, obese) for health assessment.
+                            It evaluates the weight category (underweight, normal, overweight, or obese) for health assessment.
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -1984,7 +1982,7 @@
                             If data not available then put "0"
                         </li>
                         <li>Ask customer as this data is not available in any report</li> -->
-                        <li>Please enter value either in Centimeter or Feet/Inches.</li>
+                        <li>Please enter a value in either centimeters or feet/inches.</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -2005,7 +2003,7 @@
                             If data not available then put "0"
                         </li>
                         <li>Ask customer as this data is not available in any report</li> -->
-                        <li>Please enter value in Kgs.</li>
+                        <li>Please enter the weight in kilograms (kg).</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -2043,8 +2041,8 @@
                     </p>
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
-                        <li>If data not available then put "0" or keep empty.</li>
-                        <li>The value should be between "1" and "2".</li>
+                        <li>If data is not available, enter 0 or leave it empty.</li>
+                        <li>The value should be between 1 and 2.</li>
                         <li>Ask customer if this data is not available in any report.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -2063,8 +2061,8 @@
                     </p>
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
-                        <li>If data not available then put "0" or keep empty.</li>
-                        <li>The value should be between "1" and "2".</li>
+                        <li>If data is not available, enter 0 or leave it empty.</li>
+                        <li>The value should be between 1 and 2.</li>
                         <li>Ask customer if this data is not available in any report.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -2083,7 +2081,7 @@
                     </p>
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
-                        <li>If data not available then don't select.</li>
+                        <li>If the data is not available, do not select.</li>
                         <li>Ask customer if this data is not available in any report.</li>
                     </ul>
                     <div class="clearfix"></div>
