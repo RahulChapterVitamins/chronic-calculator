@@ -178,6 +178,15 @@
             font-size: 1.5rem;
         }
 
+        .check-validity {
+            border: none;
+            background-color: #dd052b;
+            color: wheat;
+            border-radius: 5px;
+            font-size: 1rem;
+            padding: 1% 2%;
+        }
+
         /* Responsive styling for smaller screens */
         @media (max-width: 576px) {
 
@@ -388,7 +397,8 @@
 
                         <div class="showdiv" id="div1">
                             <div class="clearfix"></div>
-                            <div class="media" style="margin-bottom: 10px;">
+
+                            <!-- <div class="media" style="margin-bottom: 10px;">
                                 <div class="media-left">
                                     <span>A</span>
                                 </div>
@@ -411,7 +421,7 @@
                                         oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="4"
                                         inputmode="numeric" pattern="[0-9]*" onblur="calculateInsurancePlan()">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="clearfix"></div>
                             <div class="media" style="margin-bottom: 10px;">
@@ -450,10 +460,16 @@
                                     </p>
                                 </label>
                                 <div class="col-sm-6 col-xs-5">
-                                    <input type="number" class="form-control" name="bp2" id="bp2"
-                                        oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
-                                        pattern="[0-9]*" onblur="calculateInsurancePlan()">
+                                    <div style="display: flex;">
+                                        <input type="number" class="form-control" name="bp2" id="bp2"
+                                            oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
+                                            pattern="[0-9]*">
+                                    </div>
                                     <p class="text-left"><small> mmHg (Lower Value)</small></p>
+                                </div>
+                                <div style="text-align: center; margin-top: 2%;" class="col-md-12 col-sm-12">
+                                    <button class="check-validity" onclick=" calculateInsurancePlanForBP()">Check
+                                        Validity</button>
                                 </div>
                             </div>
                             <div class="media" style="margin-bottom: 10px;">
@@ -478,8 +494,12 @@
                                 <div class="col-sm-6 col-xs-5">
                                     <input type="number" name="diabetes2" id="diabetes2" class="form-control"
                                         oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
-                                        pattern="[0-9]*" onblur="calculateInsurancePlan()">
+                                        pattern="[0-9]*">
                                     <p class="text-left"><small>(value can be in decimal)</small></p>
+                                </div>
+                                <div style="text-align: center; margin-top: 2%;" class="col-md-12 col-sm-12">
+                                    <button class="check-validity" onclick="calculateInsurancePlanForDiabetese()">Check
+                                        Validity</button>
                                 </div>
                             </div>
                         </div>
@@ -517,12 +537,14 @@
                             </label>
                             <div class="col-sm-6 col-xs-5">
                                 <input type="number" class="form-control" name="arteries" id="arteries"
-                                    oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric" pattern="[0-9]*">
+                                    oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric" min="1"
+                                    pattern="[1-9][0-9]*" onkeydown="if(this.value==0 && event.key==0) return false;">
+
                             </div>
                         </div>
                         <div class="form-group odd row content-text" id="div4">
                             <label for="asthmayes" class="col-sm-6 col-xs-7 font-12">
-                                Is Stenting done within one year?
+                                Is PTCA done more than 12 months ago ?
                                 <p data-toggle="modal" data-target="#ptca-3" style="cursor: pointer; color: black;">
                                     <em><b class="red">Click
                                             here</b></em> for explanation
@@ -531,18 +553,20 @@
 
                             <div class="col-sm-6 col-xs-5" style="display: flex; align-items: center;">
                                 <label class="custom-radio-2"><input type="radio" name="stenting_prior_year" value="yes"
-                                        id="year" onchange="calculateInsurancePlan()">
+                                        id="year">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">Yes</span>
                                 </label>
                                 <label class="custom-radio-2"><input type="radio" name="stenting_prior_year" value="no"
-                                        id="year" onchange="calculateInsurancePlan()">
+                                        id="year">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">No</span>
                                 </label>
                             </div>
-
-
+                        </div>
+                        <div style="text-align: center; margin-top: 2%;" class="col-md-12 col-sm-12">
+                            <button class="check-validity" onclick="calculateInsurancePlanForPTCA()">Check
+                                Validity</button>
                         </div>
 
                         <div class="clearfix"></div>
@@ -566,19 +590,20 @@
                             </label>
 
                             <div class="col-sm-6 col-xs-5" style="display: flex; align-items: center;">
-                                <label class="custom-radio-2"><input type="radio" name="copd_condition" value="yes"
-                                        onchange="calculateInsurancePlan()">
+                                <label class="custom-radio-2"><input type="radio" name="copd_condition" value="yes">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">Yes</span>
                                 </label>
-                                <label class="custom-radio-2"><input type="radio" name="copd_condition" value="no"
-                                        onchange="calculateInsurancePlan()">
+                                <label class="custom-radio-2"><input type="radio" name="copd_condition" value="no">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">No</span>
                                 </label>
                             </div>
                         </div>
-
+                        <div style="text-align: center; margin-top: 2%;" class="col-md-12 col-sm-12">
+                            <button class="check-validity" onclick="calculateInsurancePlanForCOPD()">Check
+                                Validity</button>
+                        </div>
                         <div class="clearfix"></div>
                         <div class="media" style="margin-bottom: 10px;">
                             <div class="media-left">
@@ -658,8 +683,12 @@
                                 <div class="col-sm-6 col-xs-5">
                                     <input type="number" class="form-control static_class" name="BMI_Weight" value=""
                                         id="weight" oninput="maxLengthCheck(this)" maxlength="5" inputmode="numeric"
-                                        pattern="[0-9]*" onblur="calculateInsurancePlan()">
+                                        pattern="[0-9]*">
                                     <p class="text-left"><small> Kgs</small> </p>
+                                </div>
+                                <div style="text-align: center; margin-top: 2%;" class="col-md-12 col-sm-12">
+                                    <button class="check-validity" onclick="calculateInsurancePlanForBMI()">Check
+                                        Validity</button>
                                 </div>
                             </div>
                         </div>
@@ -720,9 +749,9 @@
 
         $(document).ready(function () {
 
-            $('input[name="Asthma_Symptoms"]').on('input', function () {
-                insurancePlans.asthma = $(this).val() ? $(this).val() : null;
-            });
+            // $('input[name="Asthma_Symptoms"]').on('input', function () {
+            //     insurancePlans.asthma = $(this).val() ? $(this).val() : null;
+            // });
 
             $('input[name="bp1"]').on('input', function () {
                 insurancePlans.bp1 = $(this).val() ? $(this).val() : null;
@@ -1011,16 +1040,13 @@
 
                 var eligiblePlans = determineBestFitPlan();
                 document.getElementById("bestFitPlan").innerText = eligiblePlans.join(",");
-                let count = checkFilledParameters(insurancePlans);
-                console.log("insurancePlans : ", insurancePlans);
-                console.log("count :", count);
-                console.log("eligiblePlans :", eligiblePlans);
+               
 
 
                 if (check_inputs() == 0) {
-                    if (count <= 2) {
-                        $('#lessInputParameters').modal('show');
-                    } else if (eligiblePlans.length == 0) {
+                   
+
+                    if (eligiblePlans.length == 0) {
                         $('#rejected').modal('show');
                     }
                     else {
@@ -1033,40 +1059,9 @@
         });
 
 
-        function checkFilledParameters(data) {
-            let fillCount = 0;
-
-            if (data.asthma !== null) {
-                fillCount++;
-            }
-
-            if (data.diabetes !== null) {
-                fillCount++;
-            }
-
-            if (data.bp1 !== null || data.bp2 !== null) {
-                fillCount++;
-            }
-
-            if (data.ptca1 !== null || data.ptca2 !== null || data.ptca3 !== null) {
-                fillCount++;
-            }
-
-            if (data.bmi !== null) {
-                fillCount++;
-            }
-
-            if (data.copd !== null) {
-                fillCount++;
-            }
-
-            return fillCount;
-        }
-
-
-        // Following Code is to display popup of insurance plan for indivisual parameter
+       
         var insurancePlans = {
-            asthma: null,
+            // asthma: null,
             bp1: null,
             bp2: null,
             diabetes: null,
@@ -1077,117 +1072,111 @@
             bmi: null
         };
 
-        function calculateInsurancePlanForAsthma() {
-            var asthmaValue = document.getElementById("Asthma_Symptoms").value;
+        // function calculateInsurancePlanForAsthma() {
+        //     $('input[name="Asthma_Symptoms"]').on('input', function () {
+        //         insurancePlans.asthma = $(this).val() ? $(this).val() : null;
+        //     });
 
-            if (asthmaValue != "") {
-                insurancePlans.asthma = asthmaValue;
+        //     var bestInsurancePlan = determineBestFitPlan();
 
-                if (asthmaValue <= 3) {
-                    var insurancePlanForAsthma = "MAX, MAX+, VYTL, VIP, VIP+";
-                } else {
-                    var insurancePlanForAsthma = "No Insurance Plan Covered";
-                }
 
-                document.getElementById("yourInsurancePlan").innerText = insurancePlanForAsthma;
-                $('#insurancePlanPopup').modal('show');
-            }
-        }
+        //     Check for Asthma
+        //     if (insurancePlans.asthma) {
+        //         if (bestInsurancePlan.length === 0) {
+        //             $('#rejected').modal('show');
+        //         } else {
+        //             document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
+        //             $('#insurancePlanPopup').modal('show');
+        //         }
+        //     }
+        // }
 
         function calculateInsurancePlanForBP() {
-            var bp1Value = document.getElementById("bp1").value;
-            var bp2Value = document.getElementById("bp2").value || 0;
+            $('input[name="bp1"]').on('input', function () {
+                insurancePlans.bp1 = $(this).val() ? $(this).val() : null;
+            });
 
-            if (bp1Value != "" && bp2Value != "") {
-                insurancePlans.bp1 = bp1Value;
-                insurancePlans.bp2 = bp2Value;
+            $('input[name="bp2"]').on('input', function () {
+                insurancePlans.bp2 = $(this).val() ? $(this).val() : null;
+            });
 
-                var insurancePlanForBP;
+            var bestInsurancePlan = determineBestFitPlan();
 
-                if (bp1Value <= 160 && bp2Value <= 100) {
-                    insurancePlanForBP = "MAX, MAX+, VYTL, VIP, VIP+";
-                } else if (bp1Value >= 161 && bp1Value <= 180 && bp2Value <= 100) {
-                    insurancePlanForBP = "VYTL";
+
+            // Check Blood Pressure
+            if (insurancePlans.bp1 && insurancePlans.bp2) {
+                if (bestInsurancePlan.length === 0) {
+                    $('#rejected').modal('show');
                 } else {
-                    insurancePlanForBP = "No Insurance Plan Covered";
+                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
+                    $('#insurancePlanPopup').modal('show');
                 }
-
-
-                document.getElementById("yourInsurancePlan").innerText = insurancePlanForBP;
-                $('#insurancePlanPopup').modal('show');
             }
         }
 
         function calculateInsurancePlanForDiabetese() {
-            var diabetesValue = document.getElementById("diabetes2").value;
+            $('input[name="diabetes2"]').on('input', function () {
+                insurancePlans.diabetes = $(this).val() ? $(this).val() : null;
+            });
 
-            if (diabetesValue != "") {
-                insurancePlans.diabetes = diabetesValue;
-                var insurancePlanForDiabetes;
+            var bestInsurancePlan = determineBestFitPlan();
 
-                if (diabetesValue <= 8) {
-                    insurancePlanForDiabetes = "MAX, MAX+,VYTL, VIP, VIP+";
-                } else if (diabetesValue > 8 && diabetesValue <= 10) {
-                    insurancePlanForDiabetes = "VYTL, VIP, VIP+";
+            // Check Diabetes
+            if (insurancePlans.diabetes) {
+                if (bestInsurancePlan.length === 0) {
+                    $('#rejected').modal('show');
                 } else {
-                    insurancePlanForDiabetes = "No Insurance Plan Covered";
+                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
+                    $('#insurancePlanPopup').modal('show');
                 }
-
-                document.getElementById("yourInsurancePlan").innerText = insurancePlanForDiabetes;
-                $('#insurancePlanPopup').modal('show');
             }
         }
 
         function calculateInsurancePlanForPTCA() {
-            var stentsValue = document.getElementById("stents") ? document.getElementById("stents").value : null;
-            var arteriesValue = document.getElementById("arteries") ? document.getElementById("arteries").value : null;
-            var yearOfStentElement = document.querySelector('input[name="stenting_prior_year"]:checked');
-            var yearOfStentValue = yearOfStentElement ? yearOfStentElement.value : null;
+            $('input[name="stents"]').on('input', function () {
+                insurancePlans.ptca1 = $(this).val() ? $(this).val() : null;
+            });
 
-            if (stentsValue && arteriesValue && yearOfStentValue) {
-                insurancePlans.ptca1 = stentsValue;
-                insurancePlans.ptca2 = arteriesValue;
-                insurancePlans.ptca3 = yearOfStentValue;
+            $('input[name="arteries"]').on('input', function () {
+                insurancePlans.ptca2 = $(this).val() ? $(this).val() : null;
+            });
 
-                var insurancePlanForPTCA;
+            $('input[name="stenting_prior_year"]').on('change', function () {
+                insurancePlans.ptca3 = $(this).val() ? $(this).val() : null;
+            });
 
-                if (stentsValue <= 1 && arteriesValue <= 1 && yearOfStentValue === "yes") {
-                    insurancePlanForPTCA = "MAX, MAX+, VYTL";
-                } else if (stentsValue >= 0 && stentsValue <= 2 && arteriesValue >= 0 && arteriesValue <= 2 && yearOfStentValue === "yes") {
-                    insurancePlanForPTCA = "VYTL";
-                } else if (stentsValue <= 1 && arteriesValue <= 1 && yearOfStentValue === "no") {
-                    insurancePlanForPTCA = "MAX, MAX+, VYTL";
-                } else if (stentsValue >= 0 && stentsValue <= 2 && arteriesValue >= 0 && arteriesValue <= 2 && yearOfStentValue === "no") {
-                    insurancePlanForPTCA = "VYTL";
+            var bestInsurancePlan = determineBestFitPlan();
+
+            // Check PTCA (stent and arteries)
+            if (insurancePlans.ptca1 && insurancePlans.ptca2 && insurancePlans.ptca3 != null) {
+                if (bestInsurancePlan.length === 0) {
+                    $('#rejected').modal('show');
                 } else {
-                    insurancePlanForPTCA = "No Insurance Plan Covered";
+                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
+                    $('#insurancePlanPopup').modal('show');
                 }
-
-                document.getElementById("yourInsurancePlan").innerText = insurancePlanForPTCA;
-                $('#insurancePlanPopup').modal('show');
             }
         }
 
         function calculateInsurancePlanForCOPD() {
-            var copdValue = document.querySelector('input[name="copd_condition"]:checked').value;
+            $('input[name="copd_condition"]').on('change', function () {
+                insurancePlans.copd = $(this).val() ? $(this).val() : null;
+            });
 
+            var bestInsurancePlan = determineBestFitPlan();
 
-            if (copdValue != "") {
-                insurancePlans.copd = copdValue;
-                var insurancePlanForCOPD;
-
-                if (copdValue === "yes") {
-                    insurancePlanForCOPD = "MAX, MAX+, VYTL";
-                } else if (copdValue === "no") {
-                    insurancePlanForCOPD = "MAX, MAX+, VYTL, VIP, VIP+";
+            // Check COPD
+            if (insurancePlans.copd != null) {
+                if (bestInsurancePlan.length === 0) {
+                    $('#rejected').modal('show');
+                } else {
+                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
+                    $('#insurancePlanPopup').modal('show');
                 }
-
-                document.getElementById("yourInsurancePlan").innerText = insurancePlanForCOPD;
-                $('#insurancePlanPopup').modal('show');
             }
         }
 
-        function calculateInsurancePlanForBMI() {
+        function calculateBMI() {
             var height, weight, bmi;
             var selectedUnit = document.querySelector('input[name="height_unit"]:checked').value || "meter";
 
@@ -1208,58 +1197,12 @@
 
             if (bmi) {
                 insurancePlans.bmi = bmi;
-                // var insurancePlanForBMI;
-
-                // if (bmi <= 36.99) {
-                //     insurancePlanForBMI = "MAX, MAX+, VYTL, VIP, VIP+";
-                // } else if (bmi > 36.99 && bmi <= 39.99) {
-                //     insurancePlanForBMI = "MAX, MAX+, VYTL";
-                // } else {
-                //     insurancePlanForBMI = "No Plan Covered";
-                // }
-
-                // document.getElementById("yourInsurancePlan").innerText = insurancePlanForBMI;
-                // $('#insurancePlanPopup').modal('show');
             }
         }
 
 
         // Function to Caluculate Plan On Flowing Chronic Inputs
-        function calculateInsurancePlan() {
-
-
-
-            $('input[name="Asthma_Symptoms"]').on('input', function () {
-                insurancePlans.asthma = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="bp1"]').on('input', function () {
-                insurancePlans.bp1 = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="bp2"]').on('input', function () {
-                insurancePlans.bp2 = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="diabetes2"]').on('input', function () {
-                insurancePlans.diabetes = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="stents"]').on('input', function () {
-                insurancePlans.ptca1 = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="arteries"]').on('input', function () {
-                insurancePlans.ptca2 = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="stenting_prior_year"]').on('change', function () {
-                insurancePlans.ptca3 = $(this).val() ? $(this).val() : null;
-            });
-
-            $('input[name="copd_condition"]').on('change', function () {
-                insurancePlans.copd = $(this).val() ? $(this).val() : null;
-            });
+        function calculateInsurancePlanForBMI() {
 
             $('input[name="bmi"]').on('input', function () {
                 insurancePlans.bmi = $(this).val() ? $(this).val() : null;
@@ -1268,61 +1211,8 @@
 
             var bestInsurancePlan = determineBestFitPlan();
 
-
-            // Check for Asthma
-            if (insurancePlans.asthma) {
-                if (bestInsurancePlan.length === 0) {
-                    $('#rejected').modal('show');
-                } else {
-                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
-                    $('#insurancePlanPopup').modal('show');
-                }
-            }
-
-            // Check Blood Pressure
-            if (insurancePlans.bp1 && insurancePlans.bp2) {
-                if (bestInsurancePlan.length === 0) {
-                    $('#rejected').modal('show');
-                } else {
-                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
-                    $('#insurancePlanPopup').modal('show');
-                }
-            }
-
-            // Check Diabetes
-            if (insurancePlans.diabetes) {
-                if (bestInsurancePlan.length === 0) {
-                    $('#rejected').modal('show');
-                } else {
-                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
-                    $('#insurancePlanPopup').modal('show');
-                }
-            }
-
-
-            // Check PTCA (stent and arteries)
-            if (insurancePlans.ptca1 && insurancePlans.ptca2 && insurancePlans.ptca3 != null) {
-                if (bestInsurancePlan.length === 0) {
-                    $('#rejected').modal('show');
-                } else {
-                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
-                    $('#insurancePlanPopup').modal('show');
-                }
-            }
-
-
-            // Check COPD
-            if (insurancePlans.copd != null) {
-                if (bestInsurancePlan.length === 0) {
-                    $('#rejected').modal('show');
-                } else {
-                    document.getElementById("yourInsurancePlan").innerText = bestInsurancePlan.join(",");
-                    $('#insurancePlanPopup').modal('show');
-                }
-            }
-
             // Check BMI
-            calculateInsurancePlanForBMI();
+            calculateBMI();
             if (insurancePlans.bmi) {
                 if (bestInsurancePlan.length === 0) {
                     $('#rejected').modal('show');
@@ -1331,9 +1221,10 @@
                     $('#insurancePlanPopup').modal('show');
                 }
             }
+
         }
 
-        // Function to Plan to Calculate One Plan For User Input
+
         function determineBestFitPlan() {
             var bestFitPlan = ["MAX", "MAX+", "VYTL", "VIP", "VIP+"];
 
@@ -1343,19 +1234,8 @@
             var yearOfStentElement = document.querySelector('input[name="stenting_prior_year"]:checked');
             insurancePlans.ptca3 = yearOfStentElement ? yearOfStentElement.value : null;
 
-            console.log(insurancePlans.copd);
-            console.log(insurancePlans.ptca3);
 
-            // Check Asthma/Hyperlipidemia
-            if (insurancePlans.asthma) {
-                var asthmaValue = insurancePlans.asthma;
 
-                if (asthmaValue <= 3) {
-                    var insurancePlanForAsthma = "MAX, MAX+, VYTL, VIP, VIP+";
-                } else {
-                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VYTL" && plan !== "VIP" && plan !== "VIP+" && plan !== "MAX+" && plan !== "MAX");
-                }
-            }
 
             // Check Blood Pressure
             if (insurancePlans.bp1 && insurancePlans.bp2) {
@@ -1396,11 +1276,11 @@
 
                 if (stent <= 1 && arteries <= 1 && yearOfStents === "yes") {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
-                } else if (stent >= 0 && stent <= 2 && arteries >= 0 && arteries <= 2 && yearOfStents === "yes") {
+                } else if (stent >= 0 && stent <= 2 && arteries >= 1 && arteries <= 2 && yearOfStents === "yes") {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+");
                 } else if (stent <= 1 && arteries <= 1 && yearOfStents === "no") {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
-                } else if (stent >= 0 && arteries <= 2 && arteries >= 0 && arteries <= 2 && yearOfStents === "no") {
+                } else if (stent >= 0 && arteries <= 2 && arteries >= 1 && arteries <= 2 && yearOfStents === "no") {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
                 } else {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
@@ -1420,11 +1300,13 @@
             }
 
             // Check BMI
-            calculateInsurancePlanForBMI();
+            calculateBMI();
             if (insurancePlans.bmi) {
                 var bmi = insurancePlans.bmi;
 
-                if (bmi > 36.99 && bmi <= 39.99) {
+                if (bmi <= 14) {
+                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
+                } else if (bmi > 36.99 && bmi <= 39.99) {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
                 } else if (bmi > 39.99) {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VYTL" && plan !== "VIP" && plan !== "VIP+" && plan !== "MAX+" && plan !== "MAX");
@@ -1435,7 +1317,7 @@
         }
 
         function resetAllEntries() {
-            if (confirm("Are you sure you want to reset all entries?")) {
+            if (confirm("Are you sure you want to reset all entries ?")) {
                 // Reset insurancePlans object
                 insurancePlans = {
                     asthma: null,
@@ -1469,7 +1351,7 @@
 
                 // Optionally, fetch fresh data or re-evaluate plans
                 var bestInsurancePlan = determineBestFitPlan();
-                console.log("Best Insurance Plans after reset:", bestInsurancePlan);
+
             }
         }
 
@@ -1532,7 +1414,8 @@
                     <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                     <p class="red"><b> * Information Missing ! *</b><span
-                            style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">Please enter a value in:<span id="fld"></span></span></p>
+                            style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">Please
+                            enter a value in:<span id="fld"></span></span></p>
                     <hr>
                     <p class="text-left"> Put in numbers only</p>
                     <div class="clearfix"></div>
@@ -1540,6 +1423,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -1564,6 +1448,7 @@
             </div>
         </div>
     </div>
+
     <!-- Click Here-->
     <!--Click Here blood Popup-->
     <div class="modal fade bs-example-modal-smb1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -1587,6 +1472,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade bs-example-modal-smb2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -1608,6 +1494,7 @@
             </div>
         </div>
     </div>
+
     <!-- Click blood Here-->
     <div class="modal fade bs-example-modal-sma2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
@@ -1623,6 +1510,7 @@
             </div>
         </div>
     </div>
+
     <!--Click Here Diabetes Popup-->
     <div class="modal fade bs-example-modal-smd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
@@ -1645,6 +1533,7 @@
             </div>
         </div>
     </div>
+
     <!-- Click Diabetes Here-->
     <!--Click Here Cal Popup-->
     <div class="modal fade bs-example-modal-smc1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -1668,6 +1557,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade bs-example-modal-smc2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -1688,6 +1578,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Click Cal Here-->
     <!--Click Here Diabetes Popup-->
     <div class="modal fade bs-example-modal-smd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -1777,7 +1668,7 @@
                         <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <h5 class="modal-title" id="myModalLabel"><b>No DATA ADD HERE Case is ok to source<br>
-                            You may contact the pre-sourcing approval team.</b>
+                                You may contact the pre-sourcing approval team.</b>
                         </h5>
                     </div>
                     <hr>
@@ -1875,7 +1766,8 @@
                         <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <h5 class="modal-title" id="myModalLabel"><b>The case is okay to source.<br>
-                                <span style="color:#000;display: inline-block; padding-top:10px; ">You may contact the pre-sourcing approval team.</span></b>
+                                <span style="color:#000;display: inline-block; padding-top:10px; ">You may contact the
+                                    pre-sourcing approval team.</span></b>
                         </h5>
                     </div>
                     <hr>
@@ -1960,7 +1852,8 @@
                             The Body Mass Index (BMI) measures body fat based on weight and height.
                         </li>
                         <li>
-                            It evaluates the weight category (underweight, normal, overweight, or obese) for health assessment.
+                            It evaluates the weight category (underweight, normal, overweight, or obese) for health
+                            assessment.
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -2061,7 +1954,7 @@
                     </p>
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
-                        <li>If data is not available, enter 0 or leave it empty.</li>
+                        <li>If data is not available, leave it empty.</li>
                         <li>The value should be between 1 and 2.</li>
                         <li>Ask customer if this data is not available in any report.</li>
                     </ul>
