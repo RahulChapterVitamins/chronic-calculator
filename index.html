@@ -75,6 +75,11 @@
                 font-size: 1.3rem;
                 font-weight: 540;
             }
+
+            .refresh-icon {
+                cursor: pointer;
+                width: 30px;
+            }
         }
 
 
@@ -290,6 +295,11 @@
                 font-weight: 600;
                 font-size: 1.2rem;
             }
+
+            .refresh-icon {
+                cursor: pointer;
+                width: 100%;
+            }
         }
     </style>
 
@@ -447,7 +457,7 @@
                                 <div class="col-sm-6 col-xs-5">
                                     <input type="number" class="form-control" name="bp1" id="bp1"
                                         oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
-                                        pattern="[0-9]*">
+                                        pattern="[0-9]*" onchange="validateTwoDigitMinimum(this)">
                                     <p class="text-left"><small>mmHg (Upper Value)</small></p>
                                 </div>
                             </div>
@@ -463,7 +473,7 @@
                                     <div style="display: flex;">
                                         <input type="number" class="form-control" name="bp2" id="bp2"
                                             oninput="maxLengthCheck(this)" maxlength="4" inputmode="numeric"
-                                            pattern="[0-9]*">
+                                            pattern="[0-9]*" onchange="validateTwoDigitMinimum(this)">
                                     </div>
                                     <p class="text-left"><small> mmHg (Lower Value)</small></p>
                                 </div>
@@ -510,7 +520,13 @@
                                 <span>P</span>
                             </div>
                             <div class="media-body">
-                                <h4 style="font-size: 18px;" class="media-heading title-space">PTCA (Angioplasty)</h4>
+                                <h4 style="font-size: 18px;" class="media-heading title-space">PTCA / Stenting
+                                    (Angioplasty)</h4>
+                                <p data-toggle="modal" data-target="#ptca"
+                                    style="cursor:pointer; font-size: 1.3rem; color: black; margin-left: 1%; margin-top: 0.5%; margin-bottom: 2px;">
+                                    <em><b class="red">Click
+                                            here</b></em> for explanation
+                                </p>
                             </div>
                             <hr
                                 style="border: none; background-color: #ff1818; margin: 0; margin-top: 3px; height: 2px;">
@@ -531,7 +547,8 @@
                         <div class="form-group even row content-text">
                             <label for="bp2" class="col-sm-6 col-xs-7 font-12">
                                 Number of Arteries Blocked
-                                <p data-toggle="modal" data-target="#ptca-2" style="cursor: pointer;  color: black;">
+                                <p data-toggle="modal" data-target="#ptca-2" style="cursor: pointer;  color: black;"
+                                    onclick="event.preventDefault();">
                                     <em><b class="red">Click here</b></em> for explanation
                                 </p>
                             </label>
@@ -544,7 +561,7 @@
                         </div>
                         <div class="form-group odd row content-text" id="div4">
                             <label for="asthmayes" class="col-sm-6 col-xs-7 font-12">
-                                Is PTCA done more than 12 months ago ?
+                                Is PTCA / Stenting done more than 12 months ago ?
                                 <p data-toggle="modal" data-target="#ptca-3" style="cursor: pointer; color: black;">
                                     <em><b class="red">Click
                                             here</b></em> for explanation
@@ -561,6 +578,12 @@
                                         id="year">
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">No</span>
+                                </label>
+                                <label class="custom-radio-2">
+                                    <span class="radio-mark-2"></span>
+                                    <div onclick="handleRemove()">
+                                        <img src="./css/refresh.png" alt="Refresh" class="refresh-icon">
+                                    </div>
                                 </label>
                             </div>
                         </div>
@@ -598,6 +621,13 @@
                                     <span class="radio-mark-2"></span>
                                     <span class="radio-text">No</span>
                                 </label>
+                                <label class="custom-radio-2">
+                                    <span class="radio-mark-2"></span>
+                                    <div onclick="handleRemove2()">
+                                        <img src="./css/refresh.png" alt="Refresh" class="refresh-icon">
+                                    </div>
+                                </label>
+
                             </div>
                         </div>
                         <div style="text-align: center; margin-top: 2%;" class="col-md-12 col-sm-12">
@@ -693,14 +723,18 @@
                             </div>
                         </div>
 
-                        <p class="text-center footerbtn">
+                        <p class="text-center footerbtn" style="display: flex; justify-content: space-evenly;">
                             <button type="button" class="btn btn-default btn-lg redbtn rounded-sm"
                                 id="Check_Case_Validity">Check
                                 Case
                                 Validity
                             </button>
-                            <button style="width: 10%; background: none; border: none;" onclick="resetAllEntries()"><img
-                                    src="./css/refresh.png" alt="Refresh" style="width: 90%;"></button>
+                            <button
+                                style="width: 10%; background: none; font-weight: 700;  border-radius: 10px; padding: 2px; border: none;"
+                                onclick="resetAllEntries()">
+                                <img src="./css/refresh.png" alt="Refresh" style="width: 70%;">
+                                Reset
+                            </button>
                         </p>
 
                     </div>
@@ -953,24 +987,22 @@
 
 
                     // Logic for PTCA empty value validation
-                    if ($(this).is(':visible') && (name == 'stents' || name == 'arteries' || name == 'stenting_prior_year')) {
+                    if ($(this).is(':visible') && (name == 'stents' || name == 'stenting_prior_year')) {
                         var stentsValue = $('input[name="stents"]').val();
                         var arteriesValue = $('input[name="arteries"]').val();
                         var stentingPriorYear = $('input[name="stenting_prior_year"]:checked').val();
 
 
-                        if (stentsValue || arteriesValue || stentingPriorYear) {
-                            if (stentsValue == '' || arteriesValue == '' || !stentingPriorYear) {
+                        if (stentsValue || stentingPriorYear) {
+                            if (stentsValue == '' || !stentingPriorYear) {
                                 a_status = true;
                                 if (fld == '') {
                                     if (stentsValue == '') {
                                         fld = 'Number of Stents';
                                     }
-                                    if (arteriesValue == '') {
-                                        fld = 'Number of Arteries Blocked';
-                                    }
+
                                     if (!stentingPriorYear) {
-                                        fld = 'Stenting Prior to 1 Year';
+                                        fld = 'Is PTCA / Stenting done more than 12 months ago ?';
                                     }
                                 }
                             }
@@ -1040,11 +1072,11 @@
 
                 var eligiblePlans = determineBestFitPlan();
                 document.getElementById("bestFitPlan").innerText = eligiblePlans.join(",");
-               
+
 
 
                 if (check_inputs() == 0) {
-                   
+
 
                     if (eligiblePlans.length == 0) {
                         $('#rejected').modal('show');
@@ -1059,7 +1091,7 @@
         });
 
 
-       
+
         var insurancePlans = {
             // asthma: null,
             bp1: null,
@@ -1141,14 +1173,41 @@
                 insurancePlans.ptca2 = $(this).val() ? $(this).val() : null;
             });
 
+
             $('input[name="stenting_prior_year"]').on('change', function () {
                 insurancePlans.ptca3 = $(this).val() ? $(this).val() : null;
             });
 
+            if (insurancePlans.ptca1 == null && insurancePlans.ptca2 == null && insurancePlans.ptca3 == null) {
+                return;
+            }
+
+            if (insurancePlans.ptca1 != null && insurancePlans.ptca3 == null) {
+                fld = 'Is PTCA / Stenting done more than 12 months ago?';
+                $('#fld').text(fld.replace('_', ' '));
+                $('#smalert').modal('show');
+                return;
+            }
+
+            if (insurancePlans.ptca1 == null && insurancePlans.ptca2 != null && insurancePlans.ptca3 == null) {
+                fld = 'Number of Stents and Is PTCA / Stenting done more than 12 months ago?';
+                $('#fld').text(fld.replace('_', ' '));
+                $('#smalert').modal('show');
+                return;
+            }
+
+
+            if (insurancePlans.ptca1 == null && insurancePlans.ptca3 != null) {
+                fld = 'Number of Stents';
+                $('#fld').text(fld.replace('_', ' '));
+                $('#smalert').modal('show');
+                return;
+            }
+
             var bestInsurancePlan = determineBestFitPlan();
 
             // Check PTCA (stent and arteries)
-            if (insurancePlans.ptca1 && insurancePlans.ptca2 && insurancePlans.ptca3 != null) {
+            if (insurancePlans.ptca1 && insurancePlans.ptca3 != null) {
                 if (bestInsurancePlan.length === 0) {
                     $('#rejected').modal('show');
                 } else {
@@ -1242,9 +1301,9 @@
                 var systolic = insurancePlans.bp1;
                 var diastolic = insurancePlans.bp2;
 
-                if (systolic <= 160 && diastolic <= 100) {
+                if (systolic <= 160 && diastolic <= 100 && systolic >= 90 && diastolic >= 60) {
                     // Will Include All the Plans
-                } else if (systolic > 160 && systolic <= 180 && diastolic <= 100) {
+                } else if (systolic > 160 && systolic <= 180 && diastolic <= 100 && systolic >= 90 && diastolic >= 60) {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "MAX" && plan !== "MAX+" && plan !== "VIP" && plan !== "VIP+");
                 } else {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VYTL" && plan !== "VIP" && plan !== "VIP+" && plan !== "MAX+" && plan !== "MAX");
@@ -1255,10 +1314,9 @@
             if (insurancePlans.diabetes) {
                 var hba1c = insurancePlans.diabetes;
 
-                if (hba1c <= 7) {
-                    // Will Include All the Plans
-                }
-                else if (hba1c <= 8) {
+                if (hba1c <= 7 && hba1c >= 4) {
+                    // Include all the plans
+                } else if (hba1c <= 8 && hba1c >= 4) {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
                 } else if (hba1c > 8 && hba1c <= 10) {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "MAX" && plan !== "MAX+" && plan !== "VIP" && plan !== "VIP+");
@@ -1269,23 +1327,49 @@
 
 
             // Check PTCA (stent and arteries)
-            if (insurancePlans.ptca1 && insurancePlans.ptca2 && insurancePlans.ptca3 != null) {
+            if (insurancePlans.ptca1 && insurancePlans.ptca3 != null) {
                 var stent = insurancePlans.ptca1;
                 var arteries = insurancePlans.ptca2;
                 var yearOfStents = insurancePlans.ptca3;
 
-                if (stent <= 1 && arteries <= 1 && yearOfStents === "yes") {
+                if (stent == 1 && arteries == null && yearOfStents === "yes") {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
-                } else if (stent >= 0 && stent <= 2 && arteries >= 1 && arteries <= 2 && yearOfStents === "yes") {
+                } else if (stent == 2 && arteries == null && yearOfStents === "yes") {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+");
-                } else if (stent <= 1 && arteries <= 1 && yearOfStents === "no") {
-                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
-                } else if (stent >= 0 && arteries <= 2 && arteries >= 1 && arteries <= 2 && yearOfStents === "no") {
-                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
+                } else if (stent == 1 && arteries == 1 && yearOfStents === "yes") {
+                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
+                } else if (stent == 1 && arteries == 2 && yearOfStents === "yes") {
+                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+");
+                } else if (stent == 2 && arteries == 1 && yearOfStents === "yes") {
+                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+");
+                } else if (stent == 2 && arteries == 2 && yearOfStents === "yes") {
+                    bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+");
                 } else {
                     bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
                 }
             }
+
+
+            // if (insurancePlans.ptca1 && insurancePlans.ptca2 && insurancePlans.ptca3 != null) {
+            //     var stent = insurancePlans.ptca1;
+            //     var arteries = insurancePlans.ptca2;
+            //     var yearOfStents = insurancePlans.ptca3;
+
+            //     if (stent <= 1 &&  yearOfStents === "yes") {
+            //         bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
+            //     } else if (stent <= 1 && arteries <= 1 && yearOfStents === "yes") {
+            //         bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+");
+            //     } else if (stent >= 0 && stent <= 2 && arteries >= 1 && arteries <= 2 && yearOfStents === "yes") {
+            //         bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+");
+            //     } else if (stent <= 1 && arteries <= 1 && yearOfStents === "no") {
+            //         bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
+            //     } else if (stent >= 0 && arteries <= 2 && arteries >= 1 && arteries <= 2 && yearOfStents === "no") {
+            //         bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
+            //     } else {
+            //         bestFitPlan = bestFitPlan.filter(plan => plan !== "VIP" && plan !== "VIP+" && plan !== "MAX" && plan !== "MAX+" && plan !== "VYTL");
+            //     }
+            // }
+
 
 
             // Check COPD
@@ -1355,6 +1439,14 @@
             }
         }
 
+        function handleRemove() {
+            $('input[name="stenting_prior_year"]').prop('checked', false);
+        }
+
+        function handleRemove2() {
+            $('input[name="copd_condition"]').prop('checked', false);
+        }
+
 
     </script>
 
@@ -1415,7 +1507,7 @@
                             aria-hidden="true">&times;</span></button>
                     <p class="red"><b> * Information Missing ! *</b><span
                             style="color:#333; display: inline-block; padding-top: 5px; font-weight:bold;width: 100%">Please
-                            enter a value in:<span id="fld"></span></span></p>
+                            enter a value in : <span id="fld"></span></span></p>
                     <hr>
                     <p class="text-left"> Put in numbers only</p>
                     <div class="clearfix"></div>
@@ -1464,7 +1556,7 @@
                         <li>
                             If data is not available, enter 0 or leave it empty.
                         </li>
-                        <li> The value should be between 1 to 180.</li>
+                        <!-- <li> The value should be between 1 to 180.</li> -->
                         <li> Don't confuse with Diastolic Blood Pressure.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -1486,7 +1578,7 @@
                         <li>
                             If data is not available, enter 0 or leave it empty.
                         </li>
-                        <li> The value should be between 1 to 100.</li>
+                        <!-- <li> The value should be between 1 to 100.</li> -->
                         <li> Don't confuse with Systolic Blood Pressure.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -1578,7 +1670,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Click Cal Here-->
     <!--Click Here Diabetes Popup-->
     <div class="modal fade bs-example-modal-smd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -1593,7 +1685,7 @@
                     <hr style="margin: 2%;">
                     <ul style=" padding-left: 15px; margin:0">
                         <li>If data not available then enter 0 or keep empty.</li>
-                        <li>The value should be between 1 to 10.</li>
+                        <!-- <li>The value should be between 1 to 10.</li> -->
                         <li>Check blood reports only, don't confuse by Urine Sugar.</li>
                         <li>Don't confuse with Random Blood Sugar or Hb or Hemoglobin.</li>
                     </ul>
@@ -1615,7 +1707,8 @@
                     <div class="red">
                         <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h5 class="modal-title" id="myModalLabel"><b>Your case is likely to be declined<br>
+                        <h5 class="modal-title" id="myModalLabel"><b>This proposal is unlikely to be approved. Kindly do
+                                not source.<br>
                             </b>
                         </h5>
                         <hr>
@@ -1924,6 +2017,26 @@
     </div>
 
     <!-- PTCA Angioplasty -->
+    <div class="modal fade" id="ptca" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="space">
+                    <button type="button" class="close crossbtn" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <p> PTCA / Stenting
+                    </p>
+                    <hr style="margin: 2%;">
+                    <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
+                        <li>Please fill this only if the customer has undergone stenting or has blocked arteries,
+                            otherwise leave it empty.</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="modal fade" id="ptca-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -1935,7 +2048,7 @@
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
                         <li>If data is not available, enter 0 or leave it empty.</li>
-                        <li>The value should be between 1 and 2.</li>
+                        <!-- <li>The value should be between 1 and 2.</li> -->
                         <li>Ask customer if this data is not available in any report.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -1955,7 +2068,7 @@
                     <hr style="margin: 2%;">
                     <ul style="margin-left:0; padding-left: 15px; font-weight: normal;">
                         <li>If data is not available, leave it empty.</li>
-                        <li>The value should be between 1 and 2.</li>
+                        <!-- <li>The value should be between 1 and 2.</li> -->
                         <li>Ask customer if this data is not available in any report.</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -2074,6 +2187,7 @@
             if (box == 'B') {
                 var bp1 = parseInt($(this).parents('.card').find('input[name="bp1"]').val());
                 var bp2 = parseInt($(this).parents('.card').find('input[name="bp2"]').val());
+
                 console.log(bp1, bp2);
                 if (!bp1 || !bp2) {
                     $('#smalert').modal('show');
@@ -2230,6 +2344,12 @@
     function maxLengthCheck(object) {
         if (object.value.length > object.maxLength)
             object.value = object.value.slice(0, object.maxLength)
+    }
+
+    function validateTwoDigitMinimum (object) {
+        if(object.value.length === 1){
+           alert('Enter minimum two digit value')
+        }   
     }
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
